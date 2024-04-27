@@ -2,7 +2,7 @@
   <view class="category-wrap">
     <view class="surface">
       <scroll-view :scroll-x="true" class="category">
-        <view v-for="(item, index) in itemList" :key="item.catId" :class="['item', { 'active': index == active }]"
+        <view v-for="(item, index) in itemList" :key="item.catId" :class="['item', { 'active': index == modelValue }]"
           @click="handleSelect(index)">
           <img :src="item.backImg" class="avatar" />
           <view class="name">{{ item.catName }}</view>
@@ -17,16 +17,16 @@
 
     <view v-show="showAll">
       <nut-overlay v-model:visible="showAll"></nut-overlay>
-      <view class="exhibition" @click="showAllBox">
+      <view class="exhibition">
         <view class="title">全部分类</view>
         <view class="category-all">
-          <view v-for="(item, index) in itemList" :key="item.catId" :class="['item', { 'active': index == active }]"
+          <view v-for="(item, index) in itemList" :key="item.catId" :class="['item', { 'active': index == modelValue }]"
             @click="handleSelect(index)">
             <img :src="item.backImg" class="avatar" />
             <view class="name">{{ item.catName }}</view>
           </view>
         </view>
-        <view class="hide">点击收起<IconFont name="triangle-up" color="#666"></IconFont>
+        <view class="hide" @click="showAllBox">点击收起<IconFont name="triangle-up" color="#666"></IconFont>
         </view>
       </view>
     </view>
@@ -39,9 +39,19 @@ import { computed } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
 import Taro from '@tarojs/taro';
 
+// 传参
 const props = defineProps({
-  ['list-data']: Object
+  ['list-data']: {
+    type: Object,
+    required: true,
+  },
+  modelValue: {
+    type: Number,
+    required: true,
+  },
 })
+
+// 数组数据
 const itemList = computed({
   get () {
     let list = props.listData
@@ -52,14 +62,20 @@ const itemList = computed({
   }
 })
 
-const active = ref(0)
-const handleSelect = (index) => {
-  active.value = index
-}
-
+// 收起蒙板
 const showAll = ref(false)
 const showAllBox = () => {
   showAll.value = !showAll.value
+}
+
+// 选择
+const emit = defineEmits(['update:modelValue']);
+const selected = computed(() => props.active || 0)
+const handleSelect = (index) => {
+  if (showAll.value) {
+    showAllBox()
+  }
+  emit('update:modelValue', index);
 }
 
 </script>

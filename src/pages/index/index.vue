@@ -19,7 +19,7 @@
     </nut-grid>
 
     <nut-grid square :border="false" class="gap">
-      <nut-grid-item v-for="(item, index) in categoryInfo || []" :key="index" :text="item.catName">
+      <nut-grid-item v-for="(item, index) in categoryInfo || []" :key="index" :text="item.catName" @click="toBuy(index)">
         <nut-avatar shape="square" size="large">
           <img :src="item.backImg" />
         </nut-avatar>
@@ -32,6 +32,7 @@
 
 <script lang="ts" setup>
 import { IconFont } from '@nutui/icons-vue-taro'
+import Taro from '@tarojs/taro';
 import topSearch from '../../components/top-search/index.vue';
 
 import { useStore } from '../../stores/common';
@@ -40,7 +41,10 @@ const store = useStore()
 const swiperInfo = store.swiperInfo
 const categoryInfo = store.categoryInfo?.slice(0, 8)
 
-
+const toBuy = (index) => {
+  Taro.switchTab({ url: '/pages/buy/index' })
+  store.setSelected(index)
+}
 </script>
 
 <style lang="scss">

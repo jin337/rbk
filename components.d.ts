@@ -7,20 +7,19 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'Index copy': typeof import('./src/components/top-category/index copy.vue')['default']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']
-    NutButton: typeof import('@nutui/nutui-taro')['Button']
+    NutDivider: typeof import('@nutui/nutui-taro')['Divider']
     NutEmpty: typeof import('@nutui/nutui-taro')['Empty']
     NutGrid: typeof import('@nutui/nutui-taro')['Grid']
     NutGridItem: typeof import('@nutui/nutui-taro')['GridItem']
-    NutInputNumber: typeof import('@nutui/nutui-taro')['InputNumber']
-    NutPrice: typeof import('@nutui/nutui-taro')['Price']
-    NutSearchbar: typeof import('@nutui/nutui-taro')['Searchbar']
+    NutOverlay: typeof import('@nutui/nutui-taro')['Overlay']
     NutSticky: typeof import('@nutui/nutui-taro')['Sticky']
     NutSwiper: typeof import('@nutui/nutui-taro')['Swiper']
     NutSwiperItem: typeof import('@nutui/nutui-taro')['SwiperItem']
     NutTabPane: typeof import('@nutui/nutui-taro')['TabPane']
     NutTabs: typeof import('@nutui/nutui-taro')['Tabs']
-    NutTag: typeof import('@nutui/nutui-taro')['Tag']
-    Swiper: typeof import('./src/components/swiper/index.vue')['default']
+    TopCategory: typeof import('./src/components/top-category/index.vue')['default']
+    TopSearch: typeof import('./src/components/top-search/index.vue')['default']
   }
 }

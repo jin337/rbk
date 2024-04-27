@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    'Index copy': typeof import('./src/components/top-category/index copy.vue')['default']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']
     NutDivider: typeof import('@nutui/nutui-taro')['Divider']
     NutEmpty: typeof import('@nutui/nutui-taro')['Empty']

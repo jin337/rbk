@@ -88,7 +88,7 @@ export const useStore = defineStore('category', {
       {
         backImg: 'https://m.360buyimg.com/n2/jfs/t1/160485/24/20708/173705/607ecbabE197a1e08/c3b555933f691fa6.jpg',
         catId: '867',
-        catName: '家纺服饰'
+        catName: '宠物用品'
       },
     ],
   }),

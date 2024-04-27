@@ -70,19 +70,19 @@ const showAllBox = () => {
   width: 100%;
 
   .item {
-    width: 150px;
     margin: 40px 10px;
     text-align: center;
 
     .avatar {
       overflow: hidden;
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       border: 1px solid #fff;
-      border-radius: 100px;
+      border-radius: 90px;
     }
 
     .name {
+      padding: 0 12px;
       font-size: 28px;
       overflow: hidden;
       white-space: nowrap;
@@ -156,7 +156,7 @@ const showAllBox = () => {
     padding: 20px 0;
 
     .item {
-      margin: 30px 10px;
+      margin: 30px 7px;
     }
   }
 

@@ -22,7 +22,7 @@ const value = ref('0')
 <style lang="scss">
 .tab-wrap {
   box-sizing: border-box;
-  height: calc(100vh - #{105px + 95px});
+  height: calc(100vh - #{100px + 100px});
   padding-bottom: env(safe-area-inset-bottom);
 }
 </style>

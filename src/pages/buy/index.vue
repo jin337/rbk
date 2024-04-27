@@ -1,10 +1,14 @@
 <template>
-  <nut-searchbar v-model="search" placeholder=" " input-background="#f6f6f6">
-    <template #rightout><nut-button type="info" size="small">搜索</nut-button></template>
-    <template #leftin>
-      <IconFont name="search2" color="#666"></IconFont>
-    </template>
-  </nut-searchbar>
+  <nut-sticky top="0">
+    <nut-searchbar v-model="search" placeholder=" " input-background="#f6f6f6">
+      <template #rightout>
+        <IconFont name="scan" color="#666"></IconFont>
+      </template>
+      <template #leftin>
+        <IconFont name="search2" color="#666"></IconFont>
+      </template>
+    </nut-searchbar>
+  </nut-sticky>
 
   <nut-tabs v-model="value" direction="vertical" title-scroll>
     <nut-tab-pane v-for="(item, index) in categoryInfo" :key="item.catName" :title="item.catName" :pane-key="index">

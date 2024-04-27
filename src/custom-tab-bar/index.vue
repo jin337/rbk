@@ -57,8 +57,8 @@ function switchTab (index, url) {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
-  background: white;
+  height: 105px;
+  background: #fff;
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
 }

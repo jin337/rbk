@@ -1,10 +1,14 @@
 <template>
-  <nut-searchbar v-model="search" placeholder=" " input-background="#f6f6f6">
-    <template #rightout><nut-button type="info" size="small">搜索</nut-button></template>
-    <template #leftin>
-      <IconFont name="search2" color="#666"></IconFont>
-    </template>
-  </nut-searchbar>
+  <nut-sticky top="0">
+    <nut-searchbar v-model="search" placeholder=" " input-background="#f6f6f6">
+      <template #rightout>
+        <IconFont name="scan" color="#666"></IconFont>
+      </template>
+      <template #leftin>
+        <IconFont name="search2" color="#666"></IconFont>
+      </template>
+    </nut-searchbar>
+  </nut-sticky>
 
   <nut-swiper :init-page="2" :auto-play="3000" pagination-visible pagination-color="#666"
     pagination-unselected-color="#f6f6f6">
@@ -12,7 +16,6 @@
       <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" />
     </nut-swiper-item>
   </nut-swiper>
-
 
   <nut-grid :column-num="2" class="gap">
     <nut-grid-item text="门店自提">
@@ -44,6 +47,10 @@ const search = ref('')
 </script>
 
 <style lang="scss">
+page {
+  padding-bottom: 180px;
+}
+
 .gap {
   margin-top: 10px;
 }

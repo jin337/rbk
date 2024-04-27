@@ -59,8 +59,8 @@ const categoryInfo = store.categoryInfo?.slice(0, 8)
   font-size: 24px;
   padding-top: 16px;
   padding-right: 20%;
-  padding-bottom: 32px;
+  padding-bottom: 48px;
   padding-left: 20%;
-  color: #999;
+  color: #bbb;
 }
 </style>

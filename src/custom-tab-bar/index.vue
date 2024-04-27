@@ -1,16 +1,16 @@
 <template>
   <cover-view class="tab-bar">
     <cover-view class="tab-bar-border"></cover-view>
-      <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item" @tap="switchTab(index, item.pagePath)">
-        <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
-        <cover-view :style="{ color: selected === index ? selectedColor : color }">{{item.text}}</cover-view>
-      </cover-view>
+    <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item" @tap="switchTab(index, item.pagePath)">
+      <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
+      <cover-view :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
+    </cover-view>
   </cover-view>
 </template>
 
 <script setup>
 import Taro from '@tarojs/taro'
-import { computed }  from 'vue'
+import { computed } from 'vue'
 import { useStore } from '../stores/tabBar'
 
 const store = useStore()
@@ -57,7 +57,7 @@ function switchTab (index, url) {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 105px;
+  height: 100px;
   background: #fff;
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);

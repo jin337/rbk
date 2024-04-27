@@ -1,14 +1,5 @@
 <template>
-  <nut-sticky top="0">
-    <nut-searchbar v-model="search" placeholder=" " input-background="#f6f6f6">
-      <template #rightout>
-        <IconFont name="scan" color="#666"></IconFont>
-      </template>
-      <template #leftin>
-        <IconFont name="search2" color="#666"></IconFont>
-      </template>
-    </nut-searchbar>
-  </nut-sticky>
+  <nut-sticky top="0"><top-search /></nut-sticky>
 
   <nut-swiper :init-page="2" :auto-play="3000" pagination-visible pagination-color="#666"
     pagination-unselected-color="#f6f6f6">
@@ -36,19 +27,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { IconFont } from '@nutui/icons-vue-taro'
-import { useStore } from '../../stores/common';
-const store = useStore()
+import topSearch from '../../components/top-search';
 
+import { useStore } from '../../stores/common';
+
+const store = useStore()
 const swiperInfo = store.swiperInfo
 const categoryInfo = store.categoryInfo?.slice(0, 8)
-const search = ref('')
+
+
 </script>
 
 <style lang="scss">
 page {
-  padding-bottom: 180px;
+  box-sizing: border-box;
+  min-height: calc(100vh - #{110px + 100px});
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .gap {

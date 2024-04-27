@@ -6,7 +6,15 @@
 </script>
 
 <style lang="scss">
-.empty{
-  margin-top: 32%
+// page {
+//   padding-bottom: 115px;
+// }
+
+.empty {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 </style>

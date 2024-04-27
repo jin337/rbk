@@ -6,4 +6,7 @@
 </script>
 
 <style lang="scss">
+page {
+  padding-bottom: 115px;
+}
 </style>

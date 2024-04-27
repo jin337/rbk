@@ -1,6 +1,6 @@
 <template>
   <view class="searchbar">
-    <view class="input"  @click="toSearch">
+    <view class="box" @click="toSearch">
       <IconFont name="search2" color="#666"></IconFont>
     </view>
     <IconFont name="scan" color="#666" @click="toMember"></IconFont>
@@ -20,26 +20,28 @@ const toSearch = () => {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .searchbar {
-  height: 100px;
-  width: 100%;
-  padding: 18px 32px;
-  box-sizing: border-box;
+  position: relative;
+  z-index: 2001;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  padding: 18px 32px;
   background-color: #fff;
 
-  .input {
+  .box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     width: 87%;
     height: 64px;
     padding-left: 16px;
     border-radius: 32px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     background-color: #f6f6f6;
   }
 }

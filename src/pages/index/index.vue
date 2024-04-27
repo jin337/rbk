@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import { IconFont } from '@nutui/icons-vue-taro'
-import topSearch from '../../components/top-search';
+import topSearch from '../../components/top-search/index.vue';
 
 import { useStore } from '../../stores/common';
 
@@ -61,6 +61,6 @@ const categoryInfo = store.categoryInfo?.slice(0, 8)
   padding-right: 20%;
   padding-bottom: 48px;
   padding-left: 20%;
-  color: #bbb;
+  color: rgba(28, 31, 35, 0.2);
 }
 </style>

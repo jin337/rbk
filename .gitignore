@@ -5,5 +5,5 @@ deploy_versions/
 node_modules/
 .DS_Store
 .swc
-/pnpm-lock.yaml
-/components.d.ts
+pnpm-lock.yaml
+components.d.ts

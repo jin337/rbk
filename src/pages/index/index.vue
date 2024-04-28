@@ -18,13 +18,16 @@
       </nut-grid-item>
     </nut-grid>
 
-    <nut-grid square :border="false" class="gap">
-      <nut-grid-item v-for="(item, index) in categoryInfo || []" :key="index" :text="item.catName" @click="toBuy(index)">
-        <nut-avatar shape="square" size="large">
-          <img :src="item.backImg" />
-        </nut-avatar>
-      </nut-grid-item>
-    </nut-grid>
+    <view class="gap grid">
+      <nut-grid square :border="false">
+        <nut-grid-item v-for="(item, index) in categoryInfo || []" :key="index" :text="item.catName"
+          @click="toBuy(index)">
+          <nut-avatar shape="square" size="large">
+            <img :src="item.backImg" />
+          </nut-avatar>
+        </nut-grid-item>
+      </nut-grid>
+    </view>
 
     <nut-divider class="divider"> 瑞贝卡母婴生活馆 </nut-divider>
   </scroll-view>
@@ -57,6 +60,11 @@ const toBuy = (index) => {
 
 .gap {
   margin-top: 10px;
+  background-color: #fff;
+}
+
+.grid {
+  padding: 14px 0;
 }
 
 .divider {

@@ -88,7 +88,7 @@ function switchTab (index, url) {
 }
 
 .tab-bar-item cover-view {
-  font-size: 22px;
+  font-size: 20px;
   margin-top: 3px;
 }
 </style>

@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import { useShopStore } from '../../stores/shop';
+
 import topSearch from '../../components/top-search/index.vue';
 import topCategory from '../../components/top-category/index.vue';
 import tagCategory from '../../components/tag-category/index.vue';
@@ -68,7 +69,7 @@ const tags = [
 ]
 
 // 商品
-const products = []
+const products = shopStore.products
 const shopCart = computed({
   get: () => shopStore.shopCart,
   set: (value) => shopStore.setShopCart(value)

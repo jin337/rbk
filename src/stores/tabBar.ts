@@ -31,8 +31,8 @@ export const useTabBarStore = defineStore("tabBar", {
     ],
   }),
   actions: {
-    setSelected(index) {
-      this.selected = index;
+    setSelected(data) {
+      this.selected = data;
     },
   },
 });

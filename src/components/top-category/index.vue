@@ -41,6 +41,7 @@ import { computed } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
 import Taro from '@tarojs/taro';
 
+const emit = defineEmits(['update:modelValue']);
 // 传参
 const props = defineProps({
   ['list-data']: {
@@ -86,7 +87,6 @@ const showAllBox = () => {
 }
 
 // 选择
-const emit = defineEmits(['update:modelValue']);
 const handleSelect = (index) => {
   if (showAll.value) {
     showAllBox()

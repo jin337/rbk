@@ -128,6 +128,81 @@ export const useShopStore = defineStore("shop", {
         catName: "奶瓶餐具",
       },
     ],
+
+    products: [
+      {
+        id: 1,
+        backImg: [
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg",
+        ],
+        price: 12.75,
+        vip: 10,
+        count: 20,
+        title: "润本植物精油贴经典款36片润本植物精油贴经典款36片润本植物精油贴经典款36片润本植物精油贴经典款36片",
+        sub: "植物精油，随身携带",
+        dec: `啦啦啦啦
+        啦啦啦
+        啦啦啦
+        啦啦啦啦啦啦啦`,
+      },
+      {
+        id: 2,
+        backImg: [
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg",
+        ],
+        price: 13,
+        vip: 9.9,
+        count: 2,
+        title: "润本柠檬贴30条/袋润本柠檬贴30条/袋润本柠檬贴30条/袋",
+        sub: "植物精油帖，防水止汗",
+        dec: `啦啦啦啦
+        啦啦啦
+        啦啦啦
+        啦啦啦啦啦啦啦`,
+      },
+      {
+        id: 3,
+        backImg: [
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg",
+        ],
+        price: 20,
+        vip: 19.9,
+        count: 2,
+        title: "333润本植物精油贴经典款36片",
+        sub: "植物精油，随身携带",
+        dec: `啦啦啦啦
+        啦啦啦
+        啦啦啦
+        啦啦啦啦啦啦啦`,
+      },
+      {
+        id: 4,
+        backImg: [
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg",
+          "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg",
+        ],
+        price: 43,
+        vip: 39.9,
+        count: 12,
+        title: "444润本柠檬贴30条/袋",
+        sub: "植物精油帖，防水止汗",
+        dec: `啦啦啦啦
+        啦啦啦
+        啦啦啦
+        啦啦啦啦啦啦啦`,
+      },
+    ],
     shopCart: [],
   }),
   actions: {

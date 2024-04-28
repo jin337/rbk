@@ -181,3 +181,30 @@ cover-view {
 ::-webkit-scrollbar {
   display: none;
 }
+
+button,
+cover-view,
+view {
+  color: #333;
+}
+
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url("./fonts/iconfont.ttf?t=1714291876222") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon_ajianshao_outline:before {
+  content: "\e50f";
+}
+
+.icon-icon_atianjia_solid:before {
+  content: "\e510";
+}

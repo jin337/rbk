@@ -18,15 +18,17 @@
     <view v-show="showAll">
       <nut-overlay v-model:visible="showAll"></nut-overlay>
       <view class="exhibition">
-        <view class="title">全部分类</view>
+        <view class="exhibition-top">
+          <view class="title">全部分类</view>
+          <view class="hide" @click="showAllBox">收起<IconFont name="triangle-up" color="#666"></IconFont>
+          </view>
+        </view>
         <view class="category-all">
           <view v-for="(item, index) in itemList" :key="item.catId" :class="['item', { 'active': index == modelValue }]"
             @click="handleSelect(index)">
             <img :src="item.backImg" class="avatar" />
             <view class="name">{{ item.catName }}</view>
           </view>
-        </view>
-        <view class="hide" @click="showAllBox">点击收起<IconFont name="triangle-up" color="#666"></IconFont>
         </view>
       </view>
     </view>
@@ -53,7 +55,7 @@ const props = defineProps({
 
 // 数组数据
 const itemList = computed({
-  get () {
+  get: () => {
     let list = props.listData
     if (list != null && Array.isArray(list)) {
       return list
@@ -102,7 +104,7 @@ const handleSelect = (index) => {
   .item {
     box-sizing: border-box;
     width: 120px;
-    margin-top: 40px;
+    margin-top: 30px;
     text-align: center;
 
     .avatar {
@@ -127,89 +129,97 @@ const handleSelect = (index) => {
   .active {
     .avatar {
       border-color: #fa2c19;
+      // #0064fa;
     }
 
     .name {
       color: #fff;
       background-color: #fa2c19;
-    }
-  }
-}
-
-.surface {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #fff;
-
-  .category {
-    width: 90%;
-    height: 240px;
-    white-space: nowrap;
-
-    .item {
-      display: inline-block;
-      margin-left: 4px;
-    }
-
-    .first {
-      margin-left: 14px;
+      // #0064fa;
     }
   }
 
-  .all {
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 10%;
-
-    text {
-      font-size: 20px;
-    }
-  }
-}
-
-.exhibition {
-  position: fixed;
-  z-index: 2001;
-  top: 100px;
-  left: 0;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: #fff;
-
-  .title {
-    font-weight: bold;
-    margin-top: 40px;
-    padding: 0 32px;
-  }
-
-  .category-all {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 20px 0;
-
-    .item {
-      margin-left: 27px;
-    }
-  }
-
-  .hide {
-    font-size: 24px;
+  .surface {
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: center;
-    padding: 20px 0;
-    color: #666;
-    border-top: 1px solid rgba(28, 31, 35, 0.08);
+    justify-content: space-between;
+    background-color: #fff;
 
-    text {
-      font-size: 20px;
+    .category {
+      width: 90%;
+      height: 180px;
+      white-space: nowrap;
+
+      .item {
+        display: inline-block;
+        margin-left: 4px;
+      }
+
+      .first {
+        margin-left: 14px;
+      }
+    }
+
+    .all {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 10%;
+
+      text {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .exhibition {
+    position: fixed;
+    z-index: 2001;
+    top: 100px;
+    left: 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #fff;
+
+    .exhibition-top {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .title {
+        font-weight: bold;
+        margin-top: 40px;
+        padding: 0 32px;
+      }
+
+      .hide {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        color: #666;
+
+        text {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .category-all {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      padding-bottom: 30px;
+
+      .item {
+        margin-top: 40px;
+        margin-left: 27px;
+      }
     }
   }
 }

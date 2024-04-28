@@ -8,7 +8,7 @@ export const useStore = defineStore("category", {
       "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg",
       "//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg",
     ],
-    selected: 0,
+    categorySelected: 0,
     categoryInfo: [
       {
         backImg:
@@ -110,8 +110,8 @@ export const useStore = defineStore("category", {
     ],
   }),
   actions: {
-    setSelected(index) {
-      this.selected = index;
+    setCategorySelected(index) {
+      this.categorySelected = index;
     },
   },
 });

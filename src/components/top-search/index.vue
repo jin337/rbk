@@ -1,5 +1,5 @@
 <template>
-  <view class="searchbar">
+  <view class="search-bar">
     <view class="box" @click="toSearch">
       <IconFont name="search2" color="#666"></IconFont>
     </view>
@@ -21,7 +21,7 @@ const toSearch = () => {
 </script>
 
 <style lang="scss">
-.searchbar {
+.search-bar {
   position: relative;
   z-index: 2001;
   display: flex;

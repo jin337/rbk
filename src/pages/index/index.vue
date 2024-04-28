@@ -38,15 +38,17 @@ import { IconFont } from '@nutui/icons-vue-taro'
 import Taro from '@tarojs/taro';
 import topSearch from '../../components/top-search/index.vue';
 
-import { useStore } from '../../stores/common';
+import { useCommonStore } from '../../stores/common';
+import { useShopStore } from '../../stores/shop';
 
-const store = useStore()
-const swiperInfo = store.swiperInfo
-const categoryInfo = store.categoryInfo?.slice(0, 8)
+const commonStore = useCommonStore()
+const shopStore = useShopStore()
+const swiperInfo = commonStore.swiperInfo
+const categoryInfo = shopStore.categoryInfo?.slice(0, 8)
 
 const toBuy = (index) => {
   Taro.switchTab({ url: '/pages/buy/index' })
-  store.setSelected(index)
+  shopStore.setCategorySelected(index)
 }
 </script>
 

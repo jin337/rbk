@@ -3,31 +3,33 @@
   <top-category :list-data="categoryInfo" v-model="categorySelected" />
 
   <nut-tabs v-model="value" direction="vertical" title-scroll class="tab-wrap">
-    <nut-tab-pane class="category-content" v-for="(item, index) in categoryInfo" :key="item.catName" :title="item.catName"
+    <nut-tab-pane class="category-content" v-for="(item, index) in classesInfo" :key="item.catName" :title="item.catName"
       :pane-key="index">
-      <view>
-        <tag-category :list-data="tags" v-model="categoryTag" />
-      </view>
+      <tag-category :list-data="tags" v-model="categoryTag" />
+      <product-list :list-data="products" v-model="shopCart" />
     </nut-tab-pane>
   </nut-tabs>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-import { useStore } from '../../stores/common';
+import { useShopStore } from '../../stores/shop';
 import topSearch from '../../components/top-search/index.vue';
 import topCategory from '../../components/top-category/index.vue';
 import tagCategory from '../../components/tag-category/index.vue';
+import productList from '../../components/product-list/index.vue';
 
-const store = useStore()
+const shopStore = useShopStore()
 
 // 全部分类选中
 const categorySelected = computed({
-  get: () => store.categorySelected,
-  set: (value) => store.setCategorySelected(value)
+  get: () => shopStore.categorySelected,
+  set: (value) => shopStore.setCategorySelected(value)
 });
+
 // 全部分类
-const categoryInfo = store.categoryInfo
+const categoryInfo = shopStore.categoryInfo
+const classesInfo = shopStore.classesInfo
 
 // tabs选中
 const value = ref(0)
@@ -64,6 +66,13 @@ const tags = [
     name: '花王'
   },
 ]
+
+// 商品
+const products = []
+const shopCart = computed({
+  get: () => shopStore.shopCart,
+  set: (value) => shopStore.setShopCart(value)
+});
 </script>
 
 <style lang="scss">

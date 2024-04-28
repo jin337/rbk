@@ -110,6 +110,7 @@ const handleSelect = (index) => {
       align-items: center;
       flex-direction: column;
       width: 10%;
+      padding: 10px 0;
     }
   }
   .exhibition {
@@ -151,11 +152,11 @@ const handleSelect = (index) => {
         line-height: 24px;
         width: 30%;
         margin-top: 20px;
+        margin-right: 18px;
         padding: 20px 0;
         text-align: center;
         border-radius: 40px;
         background-color: #f2f2f2;
-        margin-right: 18px;
       }
       .active {
         color: #fa2c19;

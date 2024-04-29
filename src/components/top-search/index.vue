@@ -42,7 +42,7 @@ const toSearch = () => {
     height: 64px;
     padding-left: 16px;
     border-radius: 32px;
-    background-color: #f6f6f6;
+    background-color: #f5f5f5;
   }
 }
 </style>

@@ -81,7 +81,6 @@ const changeList = () => {
 <style lang='scss'>
 .product-list {
   width: 100%;
-
   .item {
     display: flex;
     align-items: flex-start;
@@ -89,26 +88,22 @@ const changeList = () => {
     box-sizing: border-box;
     padding: 20px;
     border-bottom: 1px solid #f5f5f5;
-
+    background-color: #fff;
     .cover {
       width: 150px;
       height: 150px;
       margin-right: 20px;
-
       img {
         width: 100%;
         height: 100%;
       }
     }
-
     .dec {
       width: calc(100% - #{170px});
-
       .iconfont {
         font-size: 40px;
-        color: #0064fa;
+        color: #0077fa;
       }
-
       .name {
         font-size: 28px;
         display: -webkit-box;
@@ -118,13 +113,11 @@ const changeList = () => {
 
         -webkit-line-clamp: 2;
       }
-
       .sub {
         font-size: 24px;
         margin-top: 8px;
         color: #999;
       }
-
       .vip {
         font-size: 22px;
         display: inline-block;
@@ -133,7 +126,6 @@ const changeList = () => {
         padding-right: 10px;
         border-radius: 6px;
         background-color: #fac800;
-
         .tag {
           margin-right: 10px;
           padding: 0 10px;
@@ -141,17 +133,14 @@ const changeList = () => {
           background-color: #000;
         }
       }
-
       .price {
         font-size: 30px;
         font-weight: bold;
-
         .unit {
           font-size: 20px;
           margin-right: 4px;
         }
       }
-
       .price-btn {
         display: flex;
         align-items: center;

@@ -1,9 +1,12 @@
 <template>
   <view class="tag-category">
     <view class="surface">
-      <scroll-view :scroll-x="true" class="group">
-        <view v-for="(item, index) in itemList" :key="item.id"
-          :class="['item', { 'active': index == modelValue, 'first': index == 0 }]" @click="handleSelect(index)">
+      <scroll-view class="group" :scroll-x="true" :scroll-with-animation="true" :scroll-into-view="'tag-' + modelValue">
+        <view v-for="(item, index) in itemList"
+        :key="item.id"
+        :id="'tag-' + index"
+        :class="['item', { 'active': index == modelValue, 'first': index == 0 }]"
+        @click="handleSelect(index)">
           {{ item.name }}</view>
       </scroll-view>
       <view class="icon" @click="showAllBox">
@@ -82,6 +85,7 @@ const handleSelect = (index) => {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid #f2f2f2;
+    background-color: #fff;
     .group {
       width: 90%;
       height: 84px;
@@ -101,7 +105,7 @@ const handleSelect = (index) => {
         margin-left: 20px;
       }
       .active {
-        color: #fa2c19;
+        color: #0077fa;
       }
     }
     .icon {
@@ -159,7 +163,7 @@ const handleSelect = (index) => {
         background-color: #f2f2f2;
       }
       .active {
-        color: #fa2c19;
+        color: #0077fa;
       }
     }
   }

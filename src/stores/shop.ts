@@ -127,6 +127,30 @@ export const useShopStore = defineStore("shop", {
         catId: "1595",
         catName: "奶瓶餐具",
       },
+      {
+        catId: "1596",
+        catName: "儿童/青少年奶粉",
+      },
+      {
+        catId: "1597",
+        catName: "特殊医学用途配方奶粉",
+      },
+      {
+        catId: "1598",
+        catName: "纸尿裤1",
+      },
+      {
+        catId: "1599",
+        catName: "辅食零食1",
+      },
+      {
+        catId: "1600",
+        catName: "清洁护肤1",
+      },
+      {
+        catId: "1601",
+        catName: "奶瓶餐具1",
+      },
     ],
 
     products: [

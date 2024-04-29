@@ -1,8 +1,8 @@
 <template>
   <view class="category-wrap">
     <view class="surface">
-      <scroll-view :scroll-x="true" class="category" :scrollWithAnimation="true" :scrollLeft="scrollLeft">
-        <view v-for="(item, index) in itemList" :key="item.catId"
+      <scroll-view class="category" :scroll-x="true" :scroll-with-animation="true" :scroll-into-view="'category-' + modelValue">
+        <view v-for="(item, index) in itemList" :key="item.catId" :id="'category-' + index"
           :class="['item', { 'active': index == modelValue, 'first': index == 0 }]" @click="handleSelect(index)">
           <img :src="item.backImg" class="avatar" />
           <view class="name">{{ item.catName }}</view>
@@ -65,21 +65,6 @@ const itemList = computed({
   }
 })
 
-const scrollLeft = computed({
-  get: () => {
-    let num = 0
-    const index = props.modelValue
-    const difference = 68
-    const firstTerm = difference / 2
-    if (index < 4) {
-      return 0;
-    }
-    const termNumber = index - 3;
-    const value = firstTerm + termNumber * difference;
-    return value;
-  }
-})
-
 // 收起蒙板
 const showAll = ref(false)
 const showAllBox = () => {
@@ -100,13 +85,11 @@ const handleSelect = (index) => {
 .category-wrap {
   position: relative;
   width: 100%;
-
   .item {
     box-sizing: border-box;
     width: 120px;
     margin-top: 30px;
     text-align: center;
-
     .avatar {
       overflow: hidden;
       box-sizing: border-box;
@@ -115,7 +98,6 @@ const handleSelect = (index) => {
       border: 1px solid #fff;
       border-radius: 92px;
     }
-
     .name {
       font-size: 24px;
       overflow: hidden;
@@ -125,55 +107,44 @@ const handleSelect = (index) => {
       border-radius: 24px;
     }
   }
-
   .active {
     .avatar {
-      border-color: #fa2c19;
-      // #0064fa;
+      border-color: #0077fa;
     }
-
     .name {
       color: #fff;
-      background-color: #fa2c19;
-      // #0064fa;
+      background-color: #0077fa;
     }
   }
-
   .surface {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
     background-color: #fff;
-
     .category {
       width: 90%;
       height: 180px;
       white-space: nowrap;
-
       .item {
         display: inline-block;
         margin-left: 4px;
       }
-
       .first {
         margin-left: 14px;
       }
     }
-
     .all {
       font-size: 24px;
       display: flex;
       align-items: center;
       flex-direction: column;
       width: 10%;
-
       text {
         font-size: 20px;
       }
     }
   }
-
   .exhibition {
     position: fixed;
     z-index: 2001;
@@ -182,19 +153,16 @@ const handleSelect = (index) => {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     background-color: #fff;
-
     .exhibition-top {
       display: flex;
       align-items: flex-end;
       flex-direction: row;
       justify-content: space-between;
-
       .title {
         font-weight: bold;
         margin-top: 40px;
         padding: 0 32px;
       }
-
       .hide {
         font-size: 24px;
         display: flex;
@@ -202,20 +170,17 @@ const handleSelect = (index) => {
         flex-direction: row;
         justify-content: center;
         color: #666;
-
         text {
           font-size: 20px;
         }
       }
     }
-
     .category-all {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: flex-start;
       padding-bottom: 30px;
-
       .item {
         margin-top: 40px;
         margin-left: 27px;

@@ -48,14 +48,14 @@
   </view>
 
   <!-- 图片预览 -->
-  <nut-image-preview :show="showPreview" :images="detailInfo.backImg" @close="showFn(false)" />
+  <nut-image-preview :show="showPreview" :images="imgData" :init-no="current" @close="showFn(false)" />
   <!-- 分享 -->
   <nut-action-sheet v-model:visible="show" :menu-items="menuItems" cancel-txt="取消" @choose="choose" />
 </template>
 
 <script setup>
 import Taro from '@tarojs/taro';
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
 
 const detailInfo = reactive({
@@ -83,6 +83,16 @@ const onChange = (index) => {
 }
 // 预览图片
 const showPreview = ref(false)
+const imgData = computed(() => {
+  let list = []
+  let data = detailInfo.backImg
+  data.forEach(element => {
+    list.push({
+      src: element
+    })
+  });
+  return list
+})
 const showFn = (type) => {
   showPreview.value = type
 }

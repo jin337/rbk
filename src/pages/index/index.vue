@@ -33,7 +33,7 @@
   </scroll-view>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { IconFont } from '@nutui/icons-vue-taro'
 import Taro from '@tarojs/taro';
 import topSearch from '../../components/top-search/index.vue';

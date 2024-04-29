@@ -2,12 +2,10 @@
   <view class="tag-category">
     <view class="surface">
       <scroll-view class="group" :scroll-x="true" :scroll-with-animation="true" :scroll-into-view="'tag-' + modelValue">
-        <view v-for="(item, index) in itemList"
-        :key="item.id"
-        :id="'tag-' + index"
-        :class="['item', { 'active': index == modelValue, 'first': index == 0 }]"
-        @click="handleSelect(index)">
-          {{ item.name }}</view>
+        <view v-for="(item, index) in itemList" :key="item.id" :id="'tag-' + index" class="item"
+          @click="handleSelect(index)">
+          <text :class="['txt', { 'active': index == modelValue }]"> {{ item.name }}</text>
+        </view>
       </scroll-view>
       <view class="icon" @click="showAllBox">
         <IconFont name="rect-down" color="#666" size="12"></IconFont>
@@ -91,21 +89,20 @@ const handleSelect = (index) => {
       height: 84px;
       white-space: nowrap;
       .item {
-        font-size: 24px;
-        line-height: 24px;
         display: inline-block;
         margin-top: 20px;
-        margin-left: 10px;
-        padding: 10px 20px;
-        color: #6b7075;
-        border-radius: 24px;
-        background-color: #f2f2f2;
-      }
-      .first {
-        margin-left: 20px;
-      }
-      .active {
-        color: #0077fa;
+        padding-left: 12px;
+        .txt {
+          font-size: 24px;
+          line-height: 24px;
+          padding: 10px 20px;
+          color: #6b7075;
+          border-radius: 24px;
+          background-color: #f2f2f2;
+        }
+        .active {
+          color: #0077fa;
+        }
       }
     }
     .icon {

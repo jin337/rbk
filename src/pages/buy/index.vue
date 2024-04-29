@@ -10,7 +10,7 @@
   </tab-list>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref, computed } from 'vue'
 import { useShopStore } from '../../stores/shop';
 

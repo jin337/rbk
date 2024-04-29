@@ -1,8 +1,9 @@
 <template>
-  <view>222</view>
+  <view>333</view>
 </template>
 
 <script setup>
+import Taro from '@tarojs/taro';
 import {  } from 'vue';
 
 </script>

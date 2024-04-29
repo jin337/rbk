@@ -7,12 +7,19 @@ export default defineAppConfig({
   ],
   subPackages: [
     {
-      root: "pages/sub",
+      root: "pages/sub-one",
       pages: [
-        "member/index",
         "search/index",
-        "wallet/index",
+        "detail/index",
+        "cart/index",
+      ],
+    },
+    {
+      root: "pages/sub-two",
+      pages: [
         "coupon/index",
+        "member/index",
+        "wallet/index",
       ],
     },
   ],

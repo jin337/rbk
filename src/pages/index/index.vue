@@ -34,8 +34,8 @@
 </template>
 
 <script setup>
-import { IconFont } from '@nutui/icons-vue-taro'
 import Taro from '@tarojs/taro';
+import { IconFont } from '@nutui/icons-vue-taro'
 import topSearch from '../../components/top-search/index.vue';
 
 import { useCommonStore } from '../../stores/common';

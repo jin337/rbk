@@ -8,15 +8,15 @@
 </template>
 
 <script setup>
-import { IconFont } from '@nutui/icons-vue-taro'
 import Taro from '@tarojs/taro';
+import { IconFont } from '@nutui/icons-vue-taro'
 // 跳转页面-会员码
 const toMember = () => {
-  Taro.navigateTo({ url: '/pages/sub/member/index' })
+  Taro.navigateTo({ url: '/pages/sub-two/member/index' })
 }
 // 跳转页面-搜索页
 const toSearch = () => {
-  Taro.navigateTo({ url: '/pages/sub/search/index' })
+  Taro.navigateTo({ url: '/pages/sub-one/search/index' })
 }
 </script>
 

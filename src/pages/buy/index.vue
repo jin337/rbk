@@ -3,15 +3,21 @@
   <top-category :list-data="categoryInfo" v-model="categorySelected" />
 
   <tab-list :list-data="classesInfo" v-model="value">
-    <template #header>
+    <template #header v-if="refresh">
       <tag-category :list-data="tags" v-model="categoryTag" />
     </template>
-    <product-list :list-data="products" v-model="shopCart" />
+    <product-list :list-data="products" v-model="shopCart" v-if="refresh" />
+
+    <template v-else>
+      <view class="skeleton-item" v-for="i in 4" :key="i">
+        <nut-skeleton animated avatar avatar-shape="square" avatar-size="82px" width="160px" row="3"></nut-skeleton>
+      </view>
+    </template>
   </tab-list>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useShopStore } from '../../stores/shop';
 
 import topSearch from '../../components/top-search/index.vue';
@@ -74,7 +80,22 @@ const shopCart = computed({
   get: () => shopStore.shopCart,
   set: (value) => shopStore.setShopCart(value)
 });
+
+// 重置slot
+const refresh = ref(true)
+watch(value, (value, old) => {
+  if (value != old) {
+    refresh.value = false
+    setTimeout(() => {
+      refresh.value = true
+    }, 500);
+  }
+})
 </script>
 
 <style lang="scss">
+.skeleton-item {
+  margin: 20px;
+  margin-bottom: 40px;
+}
 </style>

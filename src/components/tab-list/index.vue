@@ -9,7 +9,7 @@
       <nut-sticky top="0">
         <slot name="header"></slot>
       </nut-sticky>
-      <scroll-view class="tab-content" :scroll-y="true">
+      <scroll-view :class="$slots.header ? 'tab-content' : 'tab-content1'" :scroll-y="true">
         <slot></slot>
       </scroll-view>
     </view>
@@ -64,21 +64,26 @@ const handleSelect = (index) => {
   width: 100%;
   height: calc(100vh - #{100px + 100px + 180px});
   padding-bottom: env(safe-area-inset-bottom);
+  background-color: #fff;
+
   .tab-left {
     box-sizing: border-box;
     width: 200px;
     height: 100%;
     padding: 20px 0;
     background-color: #f5f5f5;
+
     .item {
       font-size: 28px;
       padding: 20px 10px;
       text-align: center;
     }
+
     .active {
       position: relative;
       color: #0077fa;
       background-color: #fff;
+
       &::before {
         position: absolute;
         top: 20%;
@@ -91,13 +96,19 @@ const handleSelect = (index) => {
       }
     }
   }
+
   .tab-right {
     position: relative;
     width: calc(100% - #{200px});
     height: 100%;
     transform: scale(1);
+
     .tab-content {
       height: calc(100% - #{84px});
+    }
+
+    .tab-content2 {
+      height: 100%;
     }
   }
 }

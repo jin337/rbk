@@ -7,19 +7,21 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    NutActionSheet: typeof import('@nutui/nutui-taro')['ActionSheet']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']
     NutDivider: typeof import('@nutui/nutui-taro')['Divider']
     NutEmpty: typeof import('@nutui/nutui-taro')['Empty']
     NutGrid: typeof import('@nutui/nutui-taro')['Grid']
     NutGridItem: typeof import('@nutui/nutui-taro')['GridItem']
+    NutImagePreview: typeof import('@nutui/nutui-taro')['ImagePreview']
     NutInputNumber: typeof import('@nutui/nutui-taro')['InputNumber']
     NutOverlay: typeof import('@nutui/nutui-taro')['Overlay']
+    NutSkeleton: typeof import('@nutui/nutui-taro')['Skeleton']
     NutSticky: typeof import('@nutui/nutui-taro')['Sticky']
     NutSwiper: typeof import('@nutui/nutui-taro')['Swiper']
     NutSwiperItem: typeof import('@nutui/nutui-taro')['SwiperItem']
-    NutTabPane: typeof import('@nutui/nutui-taro')['TabPane']
-    NutTabs: typeof import('@nutui/nutui-taro')['Tabs']
     ProductList: typeof import('./src/components/product-list/index.vue')['default']
+    TabList: typeof import('./src/components/tab-list/index.vue')['default']
     TagCategory: typeof import('./src/components/tag-category/index.vue')['default']
     TopCategory: typeof import('./src/components/top-category/index.vue')['default']
     TopSearch: typeof import('./src/components/top-search/index.vue')['default']

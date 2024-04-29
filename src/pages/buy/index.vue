@@ -88,6 +88,7 @@ watch(value, (value, old) => {
     refresh.value = false
     setTimeout(() => {
       refresh.value = true
+      categoryTag.value = 0
     }, 500);
   }
 })

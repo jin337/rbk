@@ -1,7 +1,7 @@
 <template>
   <nut-swiper :auto-play="3000" @change="onChange">
     <nut-swiper-item v-for="(item, index) in detailInfo.backImg" :key="index" style="height: 375px">
-      <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" @click="showFn(true)" />
+      <image :src="item" alt="" style="height: 100%; width: 100%" draggable="false" @click="showFn(true)" />
     </nut-swiper-item>
     <template #page>
       <div class="swiper-pagination">图片 {{ current }}/{{ detailInfo.backImgCount }}</div>
@@ -25,7 +25,7 @@
         <view class="vip"><text class="tag">VIP</text>&#xa5;{{ detailInfo.vip }}</view>
       </view>
 
-      <nut-input-number v-model="select" :min="1" :max="detailInfo.count">
+      <nut-input-number v-model="select" :min="1" :max="detailInfo.count" class="num-btn">
         <template #left-icon>
           <view class="iconfont icon-icon_ajianshao_outline"></view>
         </template>
@@ -48,7 +48,7 @@
   </view>
 
   <!-- 图片预览 -->
-  <nut-image-preview :show="showPreview" :images="imgData" :init-no="current" @close="showFn(false)" />
+  <nut-image-preview :show="showPreview" :images="imgData" :init-no="current - 1" @close="showFn(false)" />
   <!-- 分享 -->
   <nut-action-sheet v-model:visible="show" :menu-items="menuItems" cancel-txt="取消" @choose="choose" />
 </template>
@@ -250,10 +250,16 @@ const toCart = () => {
       }
     }
 
+    .num-btn {
+      line-height: 1;
+    }
+
     .iconfont {
       font-size: 50px;
       color: #0077fa;
     }
+
+
   }
 }
 </style>

@@ -1,5 +1,6 @@
 page {
   background-color: #f2f2f2 !important;
+  font-size: 0;
 }
 
 cover-view,
@@ -182,9 +183,11 @@ cover-view {
   display: none;
 }
 
-cover-view,
-view {
-  color: #333;
+
+:root,
+page {
+  --nut-button-danger-background-color: #0077fa;
+  --nut-addresslist-contnts-contact-default: #0077fa;
 }
 
 @font-face {

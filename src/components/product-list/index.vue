@@ -1,7 +1,7 @@
 <template>
   <view class="product-list">
     <view v-for="(item, index) in itemList" :key="index" class="item">
-      <view class="cover" @click="toDetail(item.id)"><img :src="item.backImg[0]" alt=""></view>
+      <view class="cover" @click="toDetail(item.id)"><image :src="item.backImg[0]" alt="" class="img" /></view>
       <view class="dec">
         <view class="name" @click="toDetail(item.id)">{{ item.title }}</view>
         <view class="sub">{{ item.sub }}</view>
@@ -102,7 +102,7 @@ const toDetail = (id) => {
       height: 150px;
       margin-right: 20px;
 
-      img {
+      .img {
         width: 100%;
         height: 100%;
       }
@@ -154,7 +154,7 @@ const toDetail = (id) => {
         font-weight: bold;
 
         .unit {
-          font-size: 20px;
+          font-size: 24px;
           margin-right: 4px;
         }
       }
@@ -165,6 +165,10 @@ const toDetail = (id) => {
         flex-direction: row;
         justify-content: space-between;
         margin-top: 10px;
+
+        .btn {
+          line-height: 1;
+        }
       }
     }
   }

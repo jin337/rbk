@@ -22,6 +22,12 @@ export default defineAppConfig({
         "wallet/index",
       ],
     },
+    {
+      root: "pages/sub-three",
+      pages: [
+        "location/index",
+      ],
+    },
   ],
   window: {
     backgroundTextStyle: "light",

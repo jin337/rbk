@@ -1,11 +1,11 @@
 <template>
   <nut-sticky top="0"><top-search /></nut-sticky>
 
-  <scroll-view class="wrap" :scroll-y="true">
+  <scroll-view class="index-wrap" :scroll-y="true">
     <nut-swiper :init-page="2" :auto-play="3000" pagination-visible pagination-color="#666"
       pagination-unselected-color="#f6f6f6">
       <nut-swiper-item v-for="(item, index) in swiperInfo" :key="index" style="height: 300px">
-        <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" />
+        <img :src="item" alt="" class="img" style="height: 100%; width: 100%" draggable="false" />
       </nut-swiper-item>
     </nut-swiper>
 
@@ -53,28 +53,25 @@ const toBuy = (index) => {
 </script>
 
 <style lang="scss">
-.wrap {
+.index-wrap {
   overflow: hidden;
   box-sizing: border-box;
   height: calc(100vh - #{100px + 100px});
   padding-bottom: env(safe-area-inset-bottom);
-}
-
-.gap {
-  margin-top: 10px;
-  background-color: #fff;
-}
-
-.grid {
-  padding: 14px 0;
-}
-
-.divider {
-  font-size: 24px;
-  padding-top: 16px;
-  padding-right: 20%;
-  padding-bottom: 48px;
-  padding-left: 20%;
-  color: rgba(28, 31, 35, 0.2);
+  .gap {
+    margin-top: 10px;
+    background-color: #fff;
+  }
+  .grid {
+    padding: 14px 0;
+  }
+  .divider {
+    font-size: 24px;
+    padding-top: 50px;
+    padding-right: 20%;
+    padding-bottom: 50px;
+    padding-left: 20%;
+    color: rgba(28, 31, 35, 0.2);
+  }
 }
 </style>

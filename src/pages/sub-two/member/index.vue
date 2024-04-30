@@ -15,11 +15,11 @@
       <view class="circle left"></view>
       <view class="circle right"></view>
       <view></view>
-      <view class="item">
+      <view class="item" @click="toCoupon">
         <view class="num">0</view>
         <view class="name">优惠券</view>
       </view>
-      <view class="item">
+      <view class="item" @click="toWallet">
         <view class="num">0.00</view>
         <view class="name">余额</view>
       </view>
@@ -31,6 +31,14 @@
 import Taro from '@tarojs/taro';
 import { } from 'vue';
 
+// 跳转页面-会员码
+const toWallet = () => {
+  Taro.navigateTo({ url: '/pages/sub-two/wallet/index' })
+}
+// 跳转页面-优惠券
+const toCoupon = () => {
+  Taro.navigateTo({ url: '/pages/sub-two/coupon/index' })
+}
 </script>
 
 <style lang='scss'>

@@ -25,7 +25,7 @@ declare module 'vue' {
     NutSticky: typeof import('@nutui/nutui-taro')['Sticky']
     NutSwiper: typeof import('@nutui/nutui-taro')['Swiper']
     NutSwiperItem: typeof import('@nutui/nutui-taro')['SwiperItem']
-    NutTag: typeof import('@nutui/nutui-taro')['Tag']
+    NutTable: typeof import('@nutui/nutui-taro')['Table']
     ProductList: typeof import('./src/components/product-list/index.vue')['default']
     TabList: typeof import('./src/components/tab-list/index.vue')['default']
     TagCategory: typeof import('./src/components/tag-category/index.vue')['default']

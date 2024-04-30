@@ -3,7 +3,7 @@
     <view class="card">
       <view class="title-num">
         <view class="txt">我的余额（元）</view>
-        <view class="txt">交易明细<IconFont name="rect-right" size="12"></IconFont>
+        <view class="txt" @click="toExchanges">交易明细<IconFont name="rect-right" size="12"></IconFont>
         </view>
       </view>
       <view class="money">0.00</view>
@@ -35,6 +35,10 @@ import { IconFont } from '@nutui/icons-vue-taro'
 // 跳转页面-会员码
 const toMember = () => {
   Taro.navigateTo({ url: '/pages/sub-two/member/index' })
+}
+// 跳转页面-交易明细
+const toExchanges = () => {
+  Taro.navigateTo({ url: '/pages/sub-two/exchanges/index' })
 }
 
 const dataList = ref([

@@ -43,13 +43,13 @@ import youhuiquan from '../../images/youhuiquan.png';
 const itemList1 = ref([
   {
     title: '优惠劵',
-    icon: yinhangka,
+    icon: youhuiquan,
     link: '/pages/sub-two/coupon/index',
     num: '0'
   },
   {
     title: '钱包',
-    icon: youhuiquan,
+    icon: yinhangka,
     link: '/pages/sub-two/wallet/index',
     num: '0.00'
   },
@@ -153,7 +153,7 @@ const toLink = (item) => {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px 30px;
+    padding: 30px;
     border-bottom: 1px solid #f5f5f5;
     background-color: #fff;
 

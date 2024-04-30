@@ -20,6 +20,7 @@ export default defineAppConfig({
         "coupon/index",
         "member/index",
         "wallet/index",
+        "exchanges/index",
       ],
     },
     {

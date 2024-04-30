@@ -1,7 +1,7 @@
 <template>
   <view class="product-list">
     <view v-for="(item, index) in itemList" :key="index" class="item">
-      <view class="cover" @click="toDetail(item.id)"><image :src="item.backImg[0]" alt="" class="img" /></view>
+      <view class="cover" @click="toDetail(item.id)"><img :src="item.backImg[0]" alt="" class="img" /></view>
       <view class="dec">
         <view class="name" @click="toDetail(item.id)">{{ item.title }}</view>
         <view class="sub">{{ item.sub }}</view>

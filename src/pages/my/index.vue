@@ -6,12 +6,12 @@
     </nut-avatar>
     <view class="right">
       <view class="title">小明<text class="tel">138****8888</text></view>
-      <view class="sub"><text class="tag">普卡会员</text>RBK123456789</view>
+      <view class="sub"><text class="tag">普卡</text>RBK123456789</view>
     </view>
   </view>
   <nut-grid :column-num="2" class="my-bank">
     <nut-grid-item v-for="(item, index) in itemList1" :key="index" @click="toLink(item)">
-      <image class="img" mode="heightFix" :src="item.icon" />
+      <img class="img" mode="heightFix" :src="item.icon" />
       <template #text>
         <view class="num">{{ item.num }}</view>
         <view class="title">{{ item.title }}</view>
@@ -36,17 +36,20 @@
 import Taro from '@tarojs/taro';
 import { ref } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
+// 图片引入
+import yinhangka from '../../images/yinhangka.png';
+import youhuiquan from '../../images/youhuiquan.png';
 
 const itemList1 = ref([
   {
-    title: '优惠卷',
-    icon: '../../images/yinhangka.png',
+    title: '优惠劵',
+    icon: yinhangka,
     link: '/pages/sub-two/coupon/index',
     num: '0'
   },
   {
     title: '钱包',
-    icon: '../../images/youhuiquan.png',
+    icon: youhuiquan,
     link: '/pages/sub-two/wallet/index',
     num: '0.00'
   },
@@ -99,7 +102,7 @@ const toLink = (item) => {
     }
 
     .sub {
-      font-size: 28px;
+      font-size: 24px;
       display: inline-block;
       overflow: hidden;
       margin-top: 16px;
@@ -108,8 +111,9 @@ const toLink = (item) => {
       background-color: #fac800;
 
       .tag {
+        display: inline-block;
         margin-right: 10px;
-        padding: 0 10px;
+        padding: 6px 10px;
         color: #fac800;
         background-color: #000;
       }
@@ -126,7 +130,7 @@ const toLink = (item) => {
   border-radius: 30px;
 
   .img {
-    width: auto;
+    width: 100px;
     height: 100px;
   }
 

@@ -5,7 +5,7 @@
         :scroll-into-view="'category-' + modelValue">
         <view v-for="(item, index) in itemList" :key="item.catId" :id="'category-' + index"
           :class="['item', { 'active': index == modelValue }]" @click="handleSelect(index)">
-          <image :src="item.backImg" class="avatar" />
+          <img :src="item.backImg" class="avatar" />
           <view class="name">{{ item.catName }}</view>
         </view>
       </scroll-view>
@@ -27,7 +27,7 @@
         <view class="category-all">
           <view v-for="(item, index) in itemList" :key="item.catId" :class="['item', { 'active': index == modelValue }]"
             @click="handleSelect(index)">
-            <image :src="item.backImg" class="avatar" />
+            <img :src="item.backImg" class="avatar" />
             <view class="name">{{ item.catName }}</view>
           </view>
         </view>

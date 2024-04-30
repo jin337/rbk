@@ -1,7 +1,7 @@
 <template>
   <nut-swiper :auto-play="3000" @change="onChange">
     <nut-swiper-item v-for="(item, index) in detailInfo.backImg" :key="index" style="height: 375px">
-      <image :src="item" alt="" style="height: 100%; width: 100%" draggable="false" @click="showFn(true)" />
+      <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" @click="showFn(true)" />
     </nut-swiper-item>
     <template #page>
       <div class="swiper-pagination">图片 {{ current }}/{{ detailInfo.backImgCount }}</div>

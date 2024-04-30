@@ -27,6 +27,7 @@ export default defineAppConfig({
       root: "pages/sub-three",
       pages: [
         "location/index",
+        "add-location/index",
       ],
     },
   ],

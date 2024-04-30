@@ -14,7 +14,6 @@
     <view class="member-list">
       <view class="circle left"></view>
       <view class="circle right"></view>
-      <view></view>
       <view class="item" @click="toCoupon">
         <view class="num">0</view>
         <view class="name">优惠券</view>

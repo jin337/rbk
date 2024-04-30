@@ -1,7 +1,9 @@
 <template>
-  <nut-address-list :data="data" show-bottom-button @click-item="clickItem" @del-icon="delClick" @edit-icon="editClick"
+  <nut-address-list :data="data" show-bottom-button @add="addItem" @del-icon="delClick" @edit-icon="editClick"
     :data-options="dataOptions">
   </nut-address-list>
+
+  <nut-dialog title="基础弹框" content="是否确认删除该项？" v-model:visible="del" @ok="onOk" />
 </template>
 
 <script setup>
@@ -29,14 +31,20 @@ const dataOptions = reactive({
   addressDetail: 'testaddressDetail',
   addressName: 'testaddressName'
 })
-const clickItem = () => {
-  console.log('下新增')
+const addItem = () => {
+  Taro.navigateTo({ url: '/pages/sub-three/add-location/index' })
 }
+
+const del = ref(false)
 const delClick = () => {
-  console.log('删除')
+  del.value = true
 }
+const onOk = () => {
+  console.log('确认删除');
+};
+
 const editClick = () => {
-  console.log('编辑')
+  Taro.navigateTo({ url: '/pages/sub-three/add-location/index' })
 }
 </script>
 

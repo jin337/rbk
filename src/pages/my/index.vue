@@ -27,6 +27,13 @@
       </view>
       <IconFont name="rect-right" color="#666" size="12"></IconFont>
     </view>
+    <button class="item" open-type="contact" bindcontact="handleContact">
+      <view class="title">
+        <IconFont name="service" color="#666" size="14" class="icon"></IconFont>
+        在线客服
+      </view>
+      <IconFont name="rect-right" color="#666" size="12"></IconFont>
+    </button>
   </view>
 
   <nut-divider class="divider"> 瑞贝卡母婴生活馆 </nut-divider>
@@ -65,16 +72,16 @@ const itemList2 = ref([
     icon: 'location2',
     link: '/pages/sub-three/location/index',
   },
-  {
-    title: '在线客服',
-    icon: 'service',
-    link: '',
-  },
 ])
 
 // 跳转页面-会员码
 const toLink = (item) => {
   Taro.navigateTo({ url: item.link })
+}
+
+const handleContact = (e) => {
+  console.log(e.detail.path)
+  console.log(e.detail.query)
 }
 </script>
 

@@ -3,7 +3,7 @@
     :data-options="dataOptions">
   </nut-address-list>
 
-  <nut-dialog title="基础弹框" content="是否确认删除该项？" v-model:visible="del" @ok="onOk" />
+  <nut-dialog content="是否确认删除该项？" v-model:visible="del" @ok="onOk" />
 </template>
 
 <script setup>

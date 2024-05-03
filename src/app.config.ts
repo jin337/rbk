@@ -28,6 +28,7 @@ export default defineAppConfig({
       pages: [
         "location/index",
         "add-location/index",
+        "order-detail/index",
       ],
     },
   ],

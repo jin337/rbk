@@ -2,7 +2,7 @@
   "miniprogramRoot": "./",
   "projectname": "rbk",
   "description": "瑞贝卡母婴生活馆",
-  "appid": "",
+  "appid": "wx66a712cd5ffd32ab",
   "setting": {
     "urlCheck": true,
     "es6": false,

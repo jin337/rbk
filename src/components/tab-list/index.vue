@@ -1,5 +1,9 @@
 <template>
   <view class="tab-list">
+    <view class="bag">
+      <IconFont name="cart" color="#666" size="24"></IconFont>
+      <text class="txt">购物车 * <text class="num">0</text></text>
+    </view>
     <scroll-view class="tab-left" :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="'tab-' + modelValue">
       <view v-for="(item, index) in itemList" :key="index" :class="['item', { 'active': index == modelValue }]"
         :id="'tab-' + index" @click="handleSelect(index)">{{
@@ -66,12 +70,28 @@ const handleSelect = (index) => {
   padding-bottom: env(safe-area-inset-bottom);
   background-color: #fff;
 
+  .bag {
+    position: absolute;
+    left: 20px;
+    bottom: 19px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .txt {
+      font-size: 24px;
+      margin-left: 10px;
+      color: #666;
+    }
+  }
+
   .tab-left {
     box-sizing: border-box;
     width: 200px;
     height: 100%;
     padding-top: 20px;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
     background-color: #f5f5f5;
 
     .item {

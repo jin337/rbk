@@ -91,8 +91,8 @@ const handleContact = (e) => {
   align-items: center;
   flex-direction: row;
   padding: 100px 30px 100px 30px;
-  background: #3494e6;
-  background: linear-gradient(to right, #3494e6, #ec6ead);
+  background: #0887f4;
+  background: linear-gradient(to bottom, #0887f4, #d5e7f5);
 
   .right {
     margin-left: 20px;

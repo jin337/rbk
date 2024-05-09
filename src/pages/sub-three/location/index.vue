@@ -12,24 +12,24 @@ import { ref, reactive } from 'vue';
 
 const data = ref([
   {
-    testid: 3,
-    testaddressName: '姓名',
+    id: 3,
+    addressName: '姓名',
     phone: '123****4567',
     defaultAddress: false,
     fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
   },
   {
-    testid: 4,
-    testaddressName: '姓名',
+    id: 4,
+    addressName: '姓名',
     phone: '123****4567',
     defaultAddress: true,
     fullAddress: '北京市通州区测试测试测试测试测试测试测试测试测试'
   }
 ])
 const dataOptions = reactive({
-  id: 'testid',
+  id: 'id',
   addressDetail: 'testaddressDetail',
-  addressName: 'testaddressName'
+  addressName: 'addressName'
 })
 const addItem = () => {
   Taro.navigateTo({ url: '/pages/sub-three/add-location/index' })

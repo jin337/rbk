@@ -16,9 +16,7 @@
             <view class="sub">{{ item.sub }}</view>
             <view class="price-btn">
               <view class="price"><text class="unit">&#xa5;</text>{{ item.price }}</view>
-              <view class="btn">
-                <input-number v-model="item.select" :min="1" :max="item.count" @change="changeInput(item)" />
-              </view>
+              <input-number v-model="item.select" :min="1" :max="item.count" @change="changeInput(item)" />
             </view>
           </view>
         </view>
@@ -224,11 +222,8 @@ const changeInput = (item) => {
             color: red;
           }
 
-          .btn {
-            .iconfont {
-              font-size: 40px;
-              color: #0077fa;
-            }
+          .iconfont {
+            font-size: 40px;
           }
         }
       }

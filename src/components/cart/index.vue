@@ -1,6 +1,6 @@
 <template>
   <nut-overlay v-model:visible="showBottom" z-index="2300"></nut-overlay>
-  <view class="cart-wrap">
+  <view class="cart-wrap" :style="{bottom}">
     <view class="popup-content" v-show="showBottom">
       <view class="title">
         <view class="left">已选商品</view>
@@ -49,6 +49,9 @@ const props = defineProps({
   modelValue: {
     type: Object,
     required: true
+  },
+  bottom: {
+    type: Number
   }
 })
 // 蒙板
@@ -75,7 +78,7 @@ const clearCart = () => {
 
 <style lang='scss'>
 .cart-wrap {
-  position: absolute;
+  position: sticky;
   z-index: 3001;
   bottom: 100px;
   left: 0;

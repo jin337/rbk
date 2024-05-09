@@ -24,15 +24,7 @@
         <view class="price"><text class="unit">&#xa5;</text>{{ detailInfo.price }}</view>
         <view class="vip"><text class="tag">VIP</text>&#xa5;{{ detailInfo.vip }}</view>
       </view>
-
-      <nut-input-number v-model="select" :min="1" :max="detailInfo.count" class="num-btn">
-        <template #left-icon>
-          <view class="iconfont icon-icon_ajianshao_outline"></view>
-        </template>
-        <template #right-icon>
-          <view class="iconfont icon-icon_atianjia_solid"></view>
-        </template>
-      </nut-input-number>
+      <input-number v-model="select" :min="1" :max="detailInfo.count" />
     </view>
     <view class="content">
       <view class="item" @click="showSheet">

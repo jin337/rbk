@@ -4,27 +4,20 @@
     <view class="popup-content" v-show="showBottom">
       <view class="title">
         <view class="left">已选商品</view>
-        <view class="right">
+        <view class="right" @click="clearCart">
           <IconFont name="del" color="#666" size="14"></IconFont>&nbsp;清空购物车
         </view>
       </view>
       <scroll-view class="products" :scroll-y="true">
-        <view class="item">
-          <view class="cover"><img src="" alt="" class="img" /></view>
+        <view class="item" v-for="item in modelValue" :key="item.id">
+          <view class="cover"><img :src="item.backImg[0]" alt="" class="img" /></view>
           <view class="dec">
-            <view class="name">商品名字商品名字商品名字商品名字商品名字商品名字商品名字商品名字商品名字商品名字</view>
-            <view class="sub">商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息</view>
+            <view class="name">{{ item.title }}</view>
+            <view class="sub">{{ item.sub }}</view>
             <view class="price-btn">
-              <view class="price"><text class="unit">&#xa5;</text>28</view>
+              <view class="price"><text class="unit">&#xa5;</text>{{ item.price }}</view>
               <view class="btn">
-                <nut-input-number v-model="select" :min="0" :max="10">
-                  <template #left-icon>
-                    <view class="iconfont icon-icon_ajianshao_outline"></view>
-                  </template>
-                  <template #right-icon>
-                    <view class="iconfont icon-icon_atianjia_solid"></view>
-                  </template>
-                </nut-input-number>
+                <input-number v-model="item.select" :min="1" :max="item.count" />
               </view>
             </view>
           </view>
@@ -32,10 +25,10 @@
       </scroll-view>
     </view>
 
-    <view class="content">
+    <view class="content" v-show="modelValue.length">
       <view class="bag" @click="showBottom = !showBottom">
         <IconFont name="cart" color="#666" size="24"></IconFont>
-        <text class="txt">购物车 * <text class="num">20</text></text>
+        <text class="txt">购物车 * <text class="num">{{ productsNum }}</text></text>
       </view>
       <view class="shop">
         <text class="unit">&#xa5;</text>
@@ -47,11 +40,37 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
 
+const emit = defineEmits(['update:modelValue']);
+// 传参
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    required: true
+  }
+})
+// 蒙板
 const showBottom = ref(false)
-const select = ref(0)
+
+// 商品数量
+const productsNum = computed(() => {
+  const list = props.modelValue
+  let num = 0
+  if (list != null && Array.isArray(list)) {
+    list.forEach(element => {
+      num += element.select
+    });
+  }
+  return num
+})
+
+// 清空购物车
+const clearCart = () => {
+  showBottom.value = false
+  emit('update:modelValue', []);
+}
 </script>
 
 <style lang='scss'>
@@ -62,6 +81,7 @@ const select = ref(0)
   left: 0;
   width: 100%;
   background-color: #fff;
+
   .content {
     display: flex;
     align-items: center;
@@ -69,32 +89,39 @@ const select = ref(0)
     justify-content: space-between;
     height: 80px;
   }
+
   .bag {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 20px;
+
     .txt {
       font-size: 24px;
       margin-left: 10px;
       color: #666;
     }
+
     .num {
       color: #0077fa;
     }
   }
+
   .shop {
     display: flex;
     align-items: center;
     flex-direction: row;
     height: 100%;
+
     .unit {
       font-size: 24px;
     }
+
     .price {
       font-size: 42px;
     }
+
     .btn {
       font-size: 26px;
       display: flex;
@@ -109,16 +136,20 @@ const select = ref(0)
     }
   }
 }
+
 .popup-content {
   padding: 20px;
+
   .title {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
+
     .left {
       font-size: 24px;
     }
+
     .right {
       font-size: 24px;
       display: flex;
@@ -127,25 +158,31 @@ const select = ref(0)
       color: #666;
     }
   }
+
   .products {
     max-height: 500px;
+
     .item {
       margin-top: 20px;
       display: flex;
       align-items: flex-start;
       flex-direction: row;
       width: 100%;
+
       .cover {
         width: 110px;
         height: 110px;
         margin-right: 20px;
+
         img {
           width: 100%;
           height: 100%;
         }
       }
+
       .dec {
         width: calc(100% - #{130px});
+
         .name {
           font-size: 26px;
           overflow: hidden;
@@ -153,6 +190,7 @@ const select = ref(0)
           text-overflow: ellipsis;
           color: #333;
         }
+
         .sub {
           font-size: 24px;
           overflow: hidden;
@@ -160,17 +198,20 @@ const select = ref(0)
           text-overflow: ellipsis;
           color: #666;
         }
+
         .price-btn {
           display: flex;
           align-items: center;
           flex-direction: row;
           justify-content: space-between;
           margin-top: 4px;
+
           .price {
             font-size: 26px;
             font-weight: bold;
             color: red;
           }
+
           .btn {
             .iconfont {
               font-size: 40px;

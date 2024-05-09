@@ -14,8 +14,6 @@
       </scroll-view>
     </view>
   </view>
-
-  <cart />
 </template>
 
 <script setup>

@@ -8,19 +8,7 @@
         <view class="vip"><text class="tag">VIP</text>&#xa5;{{ item.vip }}</view>
         <view class="price-btn">
           <view class="price"><text class="unit">&#xa5;</text>{{ item.price }}</view>
-          <view class="btn">
-            <view class="iconfont icon-icon_atianjia_solid" v-if="item.select == 0" @click="changeInput(1, item)"></view>
-            <template v-else>
-              <nut-input-number v-model="item.select" :min="0" :max="item.count" @change="changeInput($event, item)">
-                <template #left-icon>
-                  <view class="iconfont icon-icon_ajianshao_outline"></view>
-                </template>
-                <template #right-icon>
-                  <view class="iconfont icon-icon_atianjia_solid"></view>
-                </template>
-              </nut-input-number>
-            </template>
-          </view>
+          <input-number v-model="item.select" :min="0" :max="item.count" @change="changeInput($event, item)" />
         </view>
       </view>
     </view>
@@ -87,35 +75,29 @@ const toDetail = (id) => {
 <style lang='scss'>
 .product-list {
   width: 100%;
-
+  padding-bottom: 80px;
   .item {
     display: flex;
     align-items: flex-start;
     flex-direction: row;
     box-sizing: border-box;
     padding: 20px;
-    border-bottom: 1px solid #f5f5f5;
+    border-top: 1px solid #f5f5f5;
     background-color: #fff;
-
+    &:first-child {
+      border: none;
+    }
     .cover {
       width: 150px;
       height: 150px;
       margin-right: 20px;
-
       .img {
         width: 100%;
         height: 100%;
       }
     }
-
     .dec {
       width: calc(100% - #{170px});
-
-      .iconfont {
-        font-size: 40px;
-        color: #0077fa;
-      }
-
       .name {
         font-size: 28px;
         display: -webkit-box;
@@ -125,13 +107,11 @@ const toDetail = (id) => {
 
         -webkit-line-clamp: 2;
       }
-
       .sub {
         font-size: 24px;
         margin-top: 8px;
         color: #999;
       }
-
       .vip {
         font-size: 22px;
         display: inline-block;
@@ -140,7 +120,6 @@ const toDetail = (id) => {
         padding-right: 10px;
         border-radius: 6px;
         background-color: #fac800;
-
         .tag {
           margin-right: 10px;
           padding: 0 10px;
@@ -148,27 +127,20 @@ const toDetail = (id) => {
           background-color: #000;
         }
       }
-
       .price {
         font-size: 30px;
         font-weight: bold;
-
         .unit {
           font-size: 24px;
           margin-right: 4px;
         }
       }
-
       .price-btn {
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
         margin-top: 10px;
-
-        .btn {
-          line-height: 1;
-        }
       }
     }
   }

@@ -13,18 +13,14 @@
         <nut-skeleton animated avatar avatar-shape="square" avatar-size="82px" width="160px" row="3"></nut-skeleton>
       </view>
     </template>
+
   </tab-list>
+  <cart v-model="shopCart" />
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useShopStore } from '../../stores/shop';
-
-import topSearch from '../../components/top-search/index.vue';
-import topCategory from '../../components/top-category/index.vue';
-import tabList from '../../components/tab-list/index.vue';
-import tagCategory from '../../components/tag-category/index.vue';
-import productList from '../../components/product-list/index.vue';
 
 const shopStore = useShopStore()
 

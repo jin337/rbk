@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Cart: typeof import('./src/components/cart/index.vue')['default']
+    InputNumber: typeof import('./src/components/input-number/index.vue')['default']
     NutActionSheet: typeof import('@nutui/nutui-taro')['ActionSheet']
     NutAddressList: typeof import('@nutui/nutui-taro')['AddressList']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']

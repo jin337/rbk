@@ -1,6 +1,6 @@
 <template>
   <nut-overlay v-model:visible="showBottom" z-index="2300"></nut-overlay>
-  <view class="cart-wrap" :style="{bottom}">
+  <view class="cart-wrap" :style="{ bottom }">
     <view class="popup-content" v-show="showBottom">
       <view class="title">
         <view class="left">已选商品</view>
@@ -17,7 +17,7 @@
             <view class="price-btn">
               <view class="price"><text class="unit">&#xa5;</text>{{ item.price }}</view>
               <view class="btn">
-                <input-number v-model="item.select" :min="1" :max="item.count" />
+                <input-number v-model="item.select" :min="1" :max="item.count" @change="changeInput(item)" />
               </view>
             </view>
           </view>
@@ -73,6 +73,15 @@ const productsNum = computed(() => {
 const clearCart = () => {
   showBottom.value = false
   emit('update:modelValue', []);
+}
+
+// 监控数量
+const changeInput = (item) => {
+  const arr = props.modelValue.filter(e => e.select != 0)
+  if (arr.length == 0) {
+    showBottom.value = false
+  }
+  emit('update:modelValue', arr);
 }
 </script>
 

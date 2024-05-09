@@ -78,7 +78,7 @@ const changeList = () => {
   emit('update:modelValue', list);
 }
 
-// 跳转页面-会员码
+// 跳转页面-商品详情
 const toDetail = (id) => {
   Taro.navigateTo({ url: '/pages/sub-one/detail/index?id=' + id })
 }

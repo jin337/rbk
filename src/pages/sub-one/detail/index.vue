@@ -112,7 +112,7 @@ const choose = (item) => {
 
 // 跳转页面-搜索页
 const toCart = () => {
-  Taro.navigateTo({ url: '/pages/sub-one/cart/index' })
+  Taro.switchTab({ url: '/pages/buy/index' })
 }
 </script>
 

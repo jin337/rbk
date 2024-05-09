@@ -7,12 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Cart: typeof import('./src/components/cart/index.vue')['default']
     NutActionSheet: typeof import('@nutui/nutui-taro')['ActionSheet']
     NutAddressList: typeof import('@nutui/nutui-taro')['AddressList']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']
     NutButton: typeof import('@nutui/nutui-taro')['Button']
     NutCell: typeof import('@nutui/nutui-taro')['Cell']
-    NutCellGroup: typeof import('@nutui/nutui-taro')['CellGroup']
     NutDialog: typeof import('@nutui/nutui-taro')['Dialog']
     NutDivider: typeof import('@nutui/nutui-taro')['Divider']
     NutEcard: typeof import('@nutui/nutui-taro')['Ecard']
@@ -24,7 +24,6 @@ declare module 'vue' {
     NutImagePreview: typeof import('@nutui/nutui-taro')['ImagePreview']
     NutInput: typeof import('@nutui/nutui-taro')['Input']
     NutInputNumber: typeof import('@nutui/nutui-taro')['InputNumber']
-    NutOverlay: typeof import('@nutui/nutui-taro')['Overlay']
     NutSearchbar: typeof import('@nutui/nutui-taro')['Searchbar']
     NutSkeleton: typeof import('@nutui/nutui-taro')['Skeleton']
     NutSticky: typeof import('@nutui/nutui-taro')['Sticky']

@@ -11,7 +11,6 @@ export default defineAppConfig({
       pages: [
         "search/index",
         "detail/index",
-        "cart/index",
       ],
     },
     {

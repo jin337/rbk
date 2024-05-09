@@ -14,6 +14,8 @@
       </scroll-view>
     </view>
   </view>
+
+  <cart />
 </template>
 
 <script setup>
@@ -70,7 +72,8 @@ const handleSelect = (index) => {
     box-sizing: border-box;
     width: 200px;
     height: 100%;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 100px;
     background-color: #f5f5f5;
 
     .item {

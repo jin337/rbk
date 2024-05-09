@@ -22,7 +22,7 @@
   </view>
   <view class="detail-product">
     <view :class="showAll ? 'product' : ''">
-      <view class="item" v-for="item in orderDetail.products" :key="item.id">
+      <view class="item" v-for="item in orderDetail.products" :key="item.id" @click="toDetail(item.id)">
         <view class="cover"><img :src="item.backImg[0]" alt="" class="img" /></view>
         <view class="name-sub">
           <view class="name">{{ item.title }}</view>
@@ -209,16 +209,23 @@ const orderDetail = ref({
 })
 
 const showAll = ref(true)
+
+// 跳转页面-商品详情
+const toDetail = (id) => {
+  Taro.navigateTo({ url: '/pages/sub-one/detail/index?id=' + id })
+}
 </script>
 
 <style lang='scss'>
 page {
   padding-bottom: 100px;
 }
+
 .detail-top {
   padding: 80px 20px 20px;
   background: #0887f4;
   background: linear-gradient(to bottom, #0887f4 40%, #d5e7f5 80%, #f5f5f5);
+
   .type {
     position: relative;
     display: flex;
@@ -226,16 +233,19 @@ page {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 30px;
+
     .txt {
       font-size: 46px;
       font-weight: bold;
       color: #fff;
     }
+
     .sub {
       font-size: 26px;
       margin-top: 10px;
       color: #fff;
     }
+
     .icon {
       font-size: 160px;
       font-weight: bold;
@@ -245,6 +255,7 @@ page {
       color: #0071ce;
     }
   }
+
   .local {
     position: relative;
     z-index: 2;
@@ -255,12 +266,15 @@ page {
     padding: 30px;
     border-radius: 20px;
     background-color: #fff;
+
     .box {
       margin-left: 20px;
+
       .name {
         font-size: 28px;
         color: #333;
       }
+
       .address {
         font-size: 26px;
         margin-top: 10px;
@@ -269,12 +283,14 @@ page {
     }
   }
 }
+
 .detail-sub,
 .detail-list {
   margin: 20px;
   padding-top: 30px;
   border-radius: 20px;
   background-color: #fff;
+
   .item {
     font-size: 24px;
     display: flex;
@@ -282,18 +298,22 @@ page {
     justify-content: space-between;
     padding: 0 30px 30px;
     color: #333;
+
     .left {
       width: 25%;
     }
+
     .right {
       width: 75%;
       text-align: right;
     }
+
     .price {
       font-size: 32px;
       font-weight: bold;
       color: red;
     }
+
     .unit {
       font-size: 20px;
       font-weight: bold;
@@ -301,21 +321,25 @@ page {
     }
   }
 }
+
 .detail-sub {
   .item {
     font-size: 24px;
     color: #666;
   }
 }
+
 .detail-product {
   overflow: hidden;
   margin: 0 20px 20px;
   border-radius: 20px;
   background-color: #fff;
+
   .product {
     overflow: hidden;
     height: 571px;
   }
+
   .item {
     display: flex;
     flex-direction: row;
@@ -323,22 +347,27 @@ page {
     box-sizing: border-box;
     padding: 20px;
     border-bottom: 1px solid #f5f5f5;
+
     .cover {
       width: 150px;
       height: 150px;
       margin-right: 20px;
+
       .img {
         width: 100%;
         height: 100%;
       }
     }
+
     .name-sub {
       width: 400px;
     }
+
     .price-num {
       width: 140px;
       text-align: right;
     }
+
     .name {
       font-size: 28px;
       display: -webkit-box;
@@ -349,17 +378,20 @@ page {
 
       -webkit-line-clamp: 2;
     }
+
     .sub {
       font-size: 24px;
       margin-top: 8px;
       color: #999;
     }
+
     .txt {
       font-size: 24px;
       margin-top: 8px;
       color: #333;
     }
   }
+
   .show {
     font-size: 24px;
     display: flex;
@@ -368,12 +400,14 @@ page {
     justify-content: center;
     padding: 20px 0;
     color: #666;
+
     .icon {
       font-size: 20px;
       line-height: 1;
     }
   }
 }
+
 .detail-handle {
   position: fixed;
   bottom: 0;
@@ -383,6 +417,7 @@ page {
   height: 100px;
   border-top: 1px solid #f2f2f2;
   background-color: #fff;
+
   .btn {
     display: flex;
     align-items: center;

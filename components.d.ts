@@ -31,8 +31,6 @@ declare module 'vue' {
     NutSwiperItem: typeof import('@nutui/nutui-taro')['SwiperItem']
     NutSwitch: typeof import('@nutui/nutui-taro')['Switch']
     NutTable: typeof import('@nutui/nutui-taro')['Table']
-    NutTabPane: typeof import('@nutui/nutui-taro')['TabPane']
-    NutTabs: typeof import('@nutui/nutui-taro')['Tabs']
     ProductList: typeof import('./src/components/product-list/index.vue')['default']
     TabList: typeof import('./src/components/tab-list/index.vue')['default']
     TagCategory: typeof import('./src/components/tag-category/index.vue')['default']

@@ -1,15 +1,15 @@
 <template>
   <nut-sticky top="0">
     <view class="coupon-title">
-      <view v-for="item in tabList" :key="item.paneKey" class="item" @click="tab = item.paneKey">
+      <view v-for="item in tabList" :key="item.paneKey" class="item" @click="cutTab(item)">
         <view class="title" :class="{ active: tab === item.paneKey }">{{ item.title }}</view>
       </view>
     </view>
   </nut-sticky>
 
   <view class="coupon-wrap">
-    <view class="item" v-for="item in couponList" :key="item.id">
-      <view class="left" :class="item.coupon_type == 2 ? 'theme2' : 'theme1'">
+    <view class="item" v-for="item in couponData" :key="item.id">
+      <view class="left" :class="item.type == 'c1' && (item.coupon_type == 2 ? 'theme2' : 'theme1')">
         <view class="circle top"></view>
         <view class="circle bottom"></view>
         <view class="price"><text class="unit">&#xa5;</text>{{ item.price }}</view>
@@ -21,22 +21,22 @@
         <view class="sub">{{ item.sub }}</view>
         <view class="time-btn">
           <view class="time">{{ item.start_time }}至{{ item.end_time }}</view>
-          <nut-button size="mini" color="#ccc" disabled v-if="item.type == 0 && tab=='c3'">已失效</nut-button>
-          <nut-button size="mini" color="#ccc" disabled v-if="item.type == 2 && tab=='c2'">已使用</nut-button>
-          <nut-button size="mini" type="primary" plain v-if="item.type == 1 && tab=='c1'"
-            @click="showFn(item.imgData)">去使用</nut-button>
+          <nut-button size="mini" color="#ccc" disabled v-if="item.type == 'c3'">已失效</nut-button>
+          <nut-button size="mini" color="#ccc" disabled v-if="item.type == 'c2'">已使用</nut-button>
+          <nut-button size="mini" type="primary" plain v-if="item.type == 'c1'"
+            @click="showFn(item.imgData, true)">去使用</nut-button>
         </view>
       </view>
     </view>
   </view>
 
   <!-- 预览券 -->
-  <nut-image-preview :show="showPreview" :images="imgData" @close="hideFn" />
+  <nut-image-preview :show="showPreview" :images="imgData" @close="showFn([], false)" />
 </template>
 
 <script setup>
 import Taro from '@tarojs/taro';
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const tab = ref('c1')
 const tabList = ref([
@@ -53,12 +53,12 @@ const tabList = ref([
     paneKey: 'c3'
   }
 ])
-
+// 优惠券数据
 const couponList = ref([
   {
     id: 1,
     price: 20,
-    type: 1,
+    type: 'c1',
     coupon_type: 1,
     name: '满80-20优惠券',
     sub: '门店&配送&快递',
@@ -71,7 +71,7 @@ const couponList = ref([
   {
     id: 2,
     price: 20,
-    type: 1,
+    type: 'c1',
     coupon_type: 2,
     name: '免运费',
     sub: '配送&快递',
@@ -84,7 +84,7 @@ const couponList = ref([
   {
     id: 3,
     price: 20,
-    type: 2,
+    type: 'c2',
     coupon_type: 2,
     name: '免运费',
     sub: '配送&快递',
@@ -97,7 +97,7 @@ const couponList = ref([
   {
     id: 4,
     price: 20,
-    type: 0,
+    type: 'c3',
     coupon_type: 2,
     name: '免运费',
     sub: '配送&快递',
@@ -108,17 +108,19 @@ const couponList = ref([
     }]
   },
 ])
+const couponData = computed(() => couponList.value.filter(e => e.type == tab.value) || [])
+
+// 切换tab
+const cutTab = (item) => {
+  tab.value = item.paneKey
+}
 
 // 预览券
 const showPreview = ref(false)
 const imgData = ref([])
-const showFn = (data) => {
+const showFn = (data, type) => {
   imgData.value = data
-  showPreview.value = true
-}
-const hideFn = () => {
-  imgData.value = []
-  showPreview.value = false
+  showPreview.value = type
 }
 </script>
 
@@ -152,7 +154,8 @@ const hideFn = () => {
 
 .coupon-wrap {
   padding: 30px;
-  .item{
+
+  .item {
     position: relative;
     display: flex;
     overflow: hidden;
@@ -240,5 +243,4 @@ const hideFn = () => {
     }
   }
 }
-
 </style>

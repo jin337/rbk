@@ -4,22 +4,22 @@
   <view class="order-wrap" v-else>
     <nut-sticky top="0">
       <view class="order-title">
-        <view v-for="item in tabList" :key="item.paneKey" class="item" @click="tab = item.paneKey">
+        <view v-for="item in tabList" :key="item.paneKey" class="item" @click="cutTab(item)">
           <view class="title" :class="{ active: tab === item.paneKey }">{{ item.title }}</view>
         </view>
       </view>
     </nut-sticky>
 
     <view class="order-content">
-      <view class="item" v-for="item in orderList" :key="item.id" @click="toDetail(item)">
+      <view class="item" v-for="item in orderData" :key="item.id">
         <view class="time-type">
           <view class="time">{{ item.time }}</view>
-          <view class="type" v-if="item.type == 1">已完成</view>
-          <view class="type" v-if="item.type == 2">待付款</view>
-          <view class="type" v-if="item.type == 3">待配送</view>
-          <view class="type" v-if="item.type == 4">待收货</view>
+          <view class="type" v-if="item.type == 'o1'">已完成</view>
+          <view class="type" v-if="item.type == 'o2'">待付款</view>
+          <view class="type" v-if="item.type == 'o3'">待配送</view>
+          <view class="type" v-if="item.type == 'o4'">待收货</view>
         </view>
-        <view class="cover-num">
+        <view class="cover-num" @click="toDetail(item)">
           <view class="img-list">
             <img :src="k.src" class="img" v-for="(k, v) in item.backImg" :key="v" mode="heightFix" />
           </view>
@@ -27,10 +27,10 @@
           </view>
         </view>
         <view class="price">合计：&#xa5;{{ item.price }}</view>
-        <view class="btn" v-if="item.type == 2">
+        <view class="btn" v-if="item.type == 'o2'">
           <nut-button size="mini" type="primary" plain>去付款</nut-button>
         </view>
-        <view class="btn" v-if="item.type == 4">
+        <view class="btn" v-if="item.type == 'o4'">
           <nut-button size="mini" type="primary" plain>查看物流</nut-button>
         </view>
       </view>
@@ -62,11 +62,12 @@ const tabList = ref([
   }
 ])
 
+// 订单数据
 const orderList = ref([
   {
     id: 1,
     time: "2024-05-03 16:24:12",
-    type: 1,
+    type: 'o1',
     number: 4,
     price: 134.61,
     backImg: [
@@ -79,7 +80,7 @@ const orderList = ref([
   {
     id: 2,
     time: "2024-05-03 16:24:12",
-    type: 2,
+    type: 'o2',
     number: 4,
     price: 134.61,
     backImg: [
@@ -92,7 +93,7 @@ const orderList = ref([
   {
     id: 3,
     time: "2024-05-03 16:24:12",
-    type: 3,
+    type: 'o3',
     number: 4,
     price: 134.61,
     backImg: [
@@ -105,7 +106,7 @@ const orderList = ref([
   {
     id: 4,
     time: "2024-05-03 16:24:12",
-    type: 4,
+    type: 'o4',
     number: 4,
     price: 134.61,
     backImg: [
@@ -116,7 +117,14 @@ const orderList = ref([
     ],
   },
 ])
+const orderData = computed(() => orderList.value.filter(e => e.type == tab.value) || [])
+
 const isEmpty = computed(() => orderList.value.length === 0)
+
+// 切换tab
+const cutTab = (item) => {
+  tab.value = item.paneKey
+}
 
 // 跳转页面-订单详情页
 const toDetail = (item) => {

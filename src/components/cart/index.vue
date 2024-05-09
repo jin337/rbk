@@ -1,20 +1,39 @@
 <template>
-  <nut-overlay v-model:visible="showBottom"></nut-overlay>
+  <nut-overlay v-model:visible="showBottom" z-index="2300"></nut-overlay>
   <view class="cart-wrap">
-    <view class="popup-content">
+    <view class="popup-content" v-show="showBottom">
       <view class="title">
         <view class="left">已选商品</view>
         <view class="right">
           <IconFont name="del" color="#666" size="14"></IconFont>&nbsp;清空购物车
         </view>
       </view>
-      <view class="products">
-        1111
-      </view>
+      <scroll-view class="products" :scroll-y="true">
+        <view class="item">
+          <view class="cover"><img src="" alt="" class="img" /></view>
+          <view class="dec">
+            <view class="name">商品名字商品名字商品名字商品名字商品名字商品名字商品名字商品名字商品名字商品名字</view>
+            <view class="sub">商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息商品信息</view>
+            <view class="price-btn">
+              <view class="price"><text class="unit">&#xa5;</text>28</view>
+              <view class="btn">
+                <nut-input-number v-model="select" :min="0" :max="10">
+                  <template #left-icon>
+                    <view class="iconfont icon-icon_ajianshao_outline"></view>
+                  </template>
+                  <template #right-icon>
+                    <view class="iconfont icon-icon_atianjia_solid"></view>
+                  </template>
+                </nut-input-number>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
     </view>
 
     <view class="content">
-      <view class="bag">
+      <view class="bag" @click="showBottom = !showBottom">
         <IconFont name="cart" color="#666" size="24"></IconFont>
         <text class="txt">购物车 * <text class="num">20</text></text>
       </view>
@@ -31,58 +50,51 @@
 import { ref } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
 
-const showBottom = ref(true)
+const showBottom = ref(false)
+const select = ref(0)
 </script>
 
 <style lang='scss'>
 .cart-wrap {
   position: absolute;
+  z-index: 3001;
   bottom: 100px;
   left: 0;
-  z-index: 3001;
   width: 100%;
   background-color: #fff;
-
   .content {
-    height: 80px;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
+    height: 80px;
   }
-
   .bag {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 20px;
-
     .txt {
       font-size: 24px;
       margin-left: 10px;
       color: #666;
     }
-
     .num {
       color: #0077fa;
     }
   }
-
   .shop {
     display: flex;
     align-items: center;
     flex-direction: row;
     height: 100%;
-
     .unit {
       font-size: 24px;
     }
-
     .price {
       font-size: 42px;
     }
-
     .btn {
       font-size: 26px;
       display: flex;
@@ -97,26 +109,76 @@ const showBottom = ref(true)
     }
   }
 }
-
 .popup-content {
   padding: 20px;
   .title {
-    margin-bottom: 20px;
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-
     .left {
       font-size: 24px;
     }
-
     .right {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
       font-size: 24px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
       color: #666;
+    }
+  }
+  .products {
+    max-height: 500px;
+    .item {
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      width: 100%;
+      .cover {
+        width: 110px;
+        height: 110px;
+        margin-right: 20px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .dec {
+        width: calc(100% - #{130px});
+        .name {
+          font-size: 26px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: #333;
+        }
+        .sub {
+          font-size: 24px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          color: #666;
+        }
+        .price-btn {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 4px;
+          .price {
+            font-size: 26px;
+            font-weight: bold;
+            color: red;
+          }
+          .btn {
+            .iconfont {
+              font-size: 40px;
+              color: #0077fa;
+            }
+          }
+        }
+      }
     }
   }
 }

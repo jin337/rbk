@@ -92,7 +92,7 @@ const handleContact = (e) => {
   flex-direction: row;
   padding: 100px 30px 100px 30px;
   background: #0887f4;
-  background: linear-gradient(to bottom, #0887f4, #d5e7f5);
+  background: linear-gradient(to bottom, #0887f4 40%, #d5e7f5 80%, #f5f5f5);
 
   .right {
     margin-left: 20px;

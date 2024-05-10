@@ -30,8 +30,8 @@
       </view>
       <view class="shop">
         <text class="unit">&#xa5;</text>
-        <text class="price">10000</text>
-        <view class="btn">去结账</view>
+        <text class="price">{{ productsCount }}</text>
+        <view class="btn" @click="toSubmit">去结算</view>
       </view>
     </view>
   </view>
@@ -41,7 +41,7 @@
 import { ref, computed } from 'vue';
 import { IconFont } from '@nutui/icons-vue-taro'
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'submit']);
 // 传参
 const props = defineProps({
   modelValue: {
@@ -66,6 +66,19 @@ const productsNum = computed(() => {
   }
   return num
 })
+// 商品价格
+const productsCount = computed(() => {
+  const list = props.modelValue
+  let num = 0
+  if (list != null && Array.isArray(list)) {
+    list.forEach(element => {
+      if (element.select) {
+        num += (element.select * element.price)
+      }
+    });
+  }
+  return num
+})
 
 // 清空购物车
 const clearCart = () => {
@@ -80,6 +93,11 @@ const changeInput = (item) => {
     showBottom.value = false
   }
   emit('update:modelValue', arr);
+}
+
+// 结账
+const toSubmit = () => {
+  emit('submit', props.modelValue);
 }
 </script>
 
@@ -97,7 +115,7 @@ const changeInput = (item) => {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    height: 80px;
+    height: 100px;
   }
 
   .bag {

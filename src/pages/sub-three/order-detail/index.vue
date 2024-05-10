@@ -120,7 +120,7 @@ const orderDetail = ref({
   price_type: 1,
   over_time: "2024-05-03 16:24:12",
   time: "2024-05-03 16:24:12",
-  type: 'o2',
+  type: 'o1',
   order_type: 1,
   local: {
     id: 3,

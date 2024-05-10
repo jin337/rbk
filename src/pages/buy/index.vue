@@ -15,10 +15,11 @@
     </template>
 
   </tab-list>
-  <cart v-model="shopCart" />
+  <cart v-model="shopCart" @submit="toCreate" />
 </template>
 
 <script setup>
+import Taro from '@tarojs/taro';
 import { ref, computed, watch } from 'vue'
 import { useShopStore } from '../../stores/shop';
 
@@ -88,6 +89,11 @@ watch(value, (value, old) => {
     }, 500);
   }
 })
+
+// 结账
+const toCreate = (e) => {
+  Taro.navigateTo({ url: '/pages/sub-three/order-create/index' })
+}
 </script>
 
 <style lang="scss">

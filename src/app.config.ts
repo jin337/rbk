@@ -11,6 +11,7 @@ export default defineAppConfig({
       pages: [
         "search/index",
         "detail/index",
+        "remark/index",
       ],
     },
     {
@@ -28,6 +29,7 @@ export default defineAppConfig({
         "location/index",
         "add-location/index",
         "order-detail/index",
+        "order-create/index",
       ],
     },
   ],

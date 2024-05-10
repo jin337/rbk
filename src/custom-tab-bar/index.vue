@@ -2,8 +2,8 @@
   <cover-view class="tab-bar">
     <cover-view class="tab-bar-border"></cover-view>
     <cover-view v-for="(item, index) in list" :key="index" class="tab-bar-item" @tap="switchTab(index, item.pagePath)">
-      <cover-image :src="selected === index ? item.selectedIconPath : item.iconPath" />
-      <cover-view :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
+      <cover-image class="img" :src="selected === index ? item.selectedIconPath : item.iconPath" />
+      <cover-view class="txt" :style="{ color: selected === index ? selectedColor : color }">{{ item.text }}</cover-view>
     </cover-view>
   </cover-view>
 </template>
@@ -57,13 +57,15 @@ function switchTab (index, url) {
   flex-direction: column;
 }
 
-.tab-bar-item cover-image {
-  width: 56px;
-  height: 56px;
-}
+.tab-bar-item {
+  .img {
+    width: 56px;
+    height: 56px;
+  }
 
-.tab-bar-item cover-view {
-  font-size: 20px;
-  margin-top: 3px;
+  .txt {
+    font-size: 20px;
+    margin-top: 3px;
+  }
 }
 </style>

@@ -75,7 +75,7 @@ const toDetail = (id) => {
 <style lang='scss'>
 .product-list {
   width: 100%;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
   .item {
     display: flex;
     align-items: flex-start;

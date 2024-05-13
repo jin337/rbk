@@ -13,7 +13,7 @@
       <nut-grid-item text="门店自提">
         <IconFont name="cart" size="36" color="#666"></IconFont>
       </nut-grid-item>
-      <nut-grid-item text="外卖配送">
+      <nut-grid-item text="快递配送">
         <IconFont name="jdl" size="36" color="#666"></IconFont>
       </nut-grid-item>
     </nut-grid>

@@ -2,7 +2,7 @@
   <top-search />
   <top-category :list-data="categoryInfo" v-model="categorySelected" />
 
-  <tab-list :list-data="classesInfo" v-model="value">
+  <tab-list :list-data="classesInfo" v-model="tabSelect">
     <template #header v-if="refresh">
       <tag-category :list-data="tags" v-model="categoryTag" />
     </template>
@@ -28,7 +28,10 @@ const shopStore = useShopStore()
 // 全部分类选中
 const categorySelected = computed({
   get: () => shopStore.categorySelected,
-  set: (value) => shopStore.setCategorySelected(value)
+  set: (value) => {
+    shopStore.setCategorySelected(value)
+    tabSelect.value = 0
+  }
 });
 
 // 全部分类
@@ -36,7 +39,7 @@ const categoryInfo = shopStore.categoryInfo
 const classesInfo = shopStore.classesInfo
 
 // tabs选中
-const value = ref(0)
+const tabSelect = ref(0)
 
 // tag选中
 const categoryTag = ref(0)
@@ -80,7 +83,7 @@ const shopCart = computed({
 
 // 重置slot
 const refresh = ref(true)
-watch(value, (value, old) => {
+watch(tabSelect, (value, old) => {
   if (value != old) {
     refresh.value = false
     setTimeout(() => {

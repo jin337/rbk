@@ -17,13 +17,13 @@
     <view class="item" v-if="type == 2">
       <view class="left">预约电话</view>
       <view class="right">
-        <text class="txt">填写</text>
+        <input class="input" type="number" placeholder="填写" v-model="formData.tel">
         <IconFont name="rect-right" color="#666" size="12"></IconFont>
       </view>
     </view>
     <view class="item" v-if="type != 3">
       <view class="left">预约时间</view>
-      <view class="right">
+      <view class="right" @click="timeShow = true">
         <text class="txt" v-if="type == 1">立即送出</text>
         <text class="txt" v-if="type == 2">立即取单</text>
         <IconFont name="rect-right" color="#666" size="12"></IconFont>
@@ -40,7 +40,7 @@
 
   <view class="create-item">
     <view class="title">结算</view>
-    <view class="cover-num" @click="show = true">
+    <view class="cover-num" @click="productShow = true">
       <view class="img-list">
         <img :src="k.backImg[0]" class="img" v-for="(k, v) in orderData" :key="v" mode="heightFix" />
       </view>
@@ -53,7 +53,7 @@
     </view>
     <view class="item">
       <view class="left">优惠券</view>
-      <view class="right">
+      <view class="right" @click="toCoupon">
         <text class="txt">无可用券</text>
         <IconFont name="rect-right" color="#666" size="12"></IconFont>
       </view>
@@ -73,10 +73,13 @@
   </view>
 
   <view class="submit-order">
-    <text class="txt1">商品合计：</text><text class="txt2">&#xa5;34.90</text><nut-button type="primary">去支付</nut-button>
+    <text class="txt1">商品合计：</text>
+    <text class="txt2">&#xa5;34.90</text>
+    <nut-button type="primary" @click="submit">去支付</nut-button>
   </view>
 
-  <nut-popup v-model:visible="show" position="bottom" closeable round>
+  <!-- 商品信息 -->
+  <nut-popup v-model:visible="productShow" position="bottom" closeable round>
     <view class="order-product">
       <view class="title">商品信息</view>
       <scroll-view class="product" :scroll-y="true">
@@ -94,6 +97,15 @@
       </scroll-view>
     </view>
   </nut-popup>
+
+  <!-- 时间选择 -->
+  <nut-popup v-model:visible="timeShow" position="bottom">
+    <nut-date-picker v-model="formData.time" type="datetime" :min-date="min" :max-date="max" :three-dimensional="false"
+      @confirm="confirm"></nut-date-picker>
+  </nut-popup>
+
+  <!-- toast信息 -->
+  <nut-toast :msg="toast.msg" v-model:visible="toast.show" :type="toast.type" @closed="onClosed" />
 </template>
 
 <script setup>
@@ -103,7 +115,22 @@ import { IconFont } from '@nutui/icons-vue-taro'
 // 配送方式
 const type = ref('1')
 const val = ref('1')
-const show = ref(false)
+const productShow = ref(false)
+const timeShow = ref(false)
+
+const formData = ref({
+  tel: '', // 电话
+  time: '', // 配送时间
+  location: '', // 配送地址
+  remark: '', // 备注
+  coupon: '' // 优惠券
+})
+// 时间选择
+const min = new Date(2020, 0, 1, 10, 40)
+const max = new Date(2025, 10, 1, 23, 29)
+const confirm = ({ selectedValue }) => {
+  formData.value.time = selectedValue.slice(0, 3).join('/') + ' ' + selectedValue.slice(3, 5).join(':')
+}
 
 // 跳转页面-备注页
 const toRemark = () => {
@@ -113,6 +140,10 @@ const toRemark = () => {
 // 跳转页面-地址页
 const toLocation = () => {
   Taro.navigateTo({ url: '/pages/sub-three/location/index' })
+}
+// 跳转页面-优惠券页
+const toCoupon = () => {
+  Taro.navigateTo({ url: '/pages/sub-two/coupon/index' })
 }
 // 订单数据
 const orderData = ref([
@@ -200,6 +231,23 @@ const orderNumber = computed(() => {
   return num
 })
 
+// 去支付
+const toast = ref({
+  show: false,
+  type: '',  //fail success
+  msg: ''
+})
+const submit = () => {
+  toast.value = {
+    show: true,
+    type: 'success',
+    msg: '支付成功'
+  }
+}
+// 支付后跳转
+const onClosed = () => {
+  Taro.switchTab({ url: "/pages/order/index" })
+}
 </script>
 
 <style lang='scss'>
@@ -231,7 +279,7 @@ const orderNumber = computed(() => {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 8px 0;
     color: #333;
 
@@ -253,6 +301,15 @@ const orderNumber = computed(() => {
       .txt {
         font-size: 26px;
         color: #666;
+      }
+
+      .input {
+        font-size: 26px;
+        width: 100%;
+        height: 26px;
+        min-height: 26px;
+        text-align: right;
+        color: #333;
       }
     }
   }
@@ -288,6 +345,10 @@ const orderNumber = computed(() => {
 
   .nut-radio-group {
     width: 100%;
+
+    .nut-radio {
+      margin-bottom: 20px;
+    }
   }
 }
 
@@ -304,9 +365,9 @@ const orderNumber = computed(() => {
 
   .txt2 {
     font-size: 36px;
-    color: red;
-    margin-right: 20px;
     font-weight: bold;
+    margin-right: 20px;
+    color: red;
   }
 }
 
@@ -314,8 +375,8 @@ const orderNumber = computed(() => {
   .title {
     font-size: 30px;
     font-weight: bold;
-    text-align: center;
     padding: 30px 0;
+    text-align: center;
   }
 
   .product {

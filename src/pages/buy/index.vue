@@ -93,7 +93,7 @@ watch(tabSelect, (value, old) => {
   }
 })
 
-// 结账
+// 页面跳转-结账
 const toCreate = (e) => {
   Taro.navigateTo({ url: '/pages/sub-three/order-create/index' })
 }

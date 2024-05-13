@@ -12,7 +12,7 @@
 
   <product-list :list-data="products" v-model="shopCart" v-else />
 
-  <cart v-model="shopCart" :bottom="0" />
+  <cart v-model="shopCart" :bottom="0" @submit="toCreate" />
 </template>
 
 <script setup>
@@ -30,6 +30,11 @@ const shopCart = computed({
 });
 
 const isEmpty = computed(() => products.length === 0)
+
+// 页面跳转-结账
+const toCreate = (e) => {
+  Taro.navigateTo({ url: '/pages/sub-three/order-create/index' })
+}
 </script>
 
 <style lang='scss'>

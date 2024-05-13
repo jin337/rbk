@@ -1,5 +1,5 @@
 <template>
-  <nut-overlay v-model:visible="showBottom" z-index="2300"></nut-overlay>
+  <nut-overlay v-model:visible="showBottom" z-index="2300" :lock-scroll="true"></nut-overlay>
   <view class="cart-wrap" :style="{ bottom }">
     <view class="popup-content" v-show="showBottom">
       <view class="title">
